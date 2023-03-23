@@ -2,6 +2,7 @@
 otakuReviews 프로젝트에 이어, 팀원 한명이 더 추가되었고, 이번에는 스프링부트를 이용한 프로젝트 레포입니다.<br>
 기존 JSP와 SERVLET 위주의 otakuReviews 프로젝트를 SpringBoot 중심으로 리뉴얼하고 웹페이지 더 나아가 어플 제작까지 목표로 하고있습니다.<br>
 Start Date: 03/23/2023<br>
+![1679561792128](https://user-images.githubusercontent.com/116807050/227152659-6518259d-7d8f-47c7-b4a3-c68f205cb1da.jpg)
 <br>
 팀명:   <br>
 멤버:   <br>
