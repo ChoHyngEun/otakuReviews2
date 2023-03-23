@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Page</title>
+  <link th:href="@{/css/index.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="header"></div>
+<h1>Welcome to Main Page</h1>
+<p>Here is some content for the main page.</p>
+<div class="button-container">
+  <a href="/login" class="button">Login</a>
+  <a href="/signup" class="button">Register</a>
+</div>
+</body>
+</html>
