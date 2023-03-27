@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @Controller
 public class PostController {
+
     @Autowired
     private PostService postService;
 
@@ -27,12 +28,14 @@ public class PostController {
     public String showAllPosts(Model model) {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);
+        model.addAttribute("title");
         return "posts/postList";
     }
 
     @GetMapping("/post/write")
     public String showWriteForm(Model model) {
         model.addAttribute("post", new Post());
+        model.addAttribute("title");
         return "posts/writeForm";
     }
 
@@ -42,6 +45,9 @@ public class PostController {
             return "posts/writeForm";
         }
         User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
         post.setUser(user);
         postService.savePost(post);
         return "redirect:/post";

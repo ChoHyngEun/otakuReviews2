@@ -23,7 +23,7 @@ public class Post {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Post() {
@@ -70,7 +70,7 @@ public class Post {
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date createdDate;
+    private Date createdDate = new Date();
 
     public Date getCreatedDate() {
         return createdDate;
