@@ -61,5 +61,17 @@ public class UserService {
             return null;
         }
     }
+    private final GoogleAuthenticator gAuth = new GoogleAuthenticator();
 
+    public boolean verifyCode(User user, int code) {
+        return gAuth.authorize(user.getOtpSecret(), code);
+    }
+
+    public String generateQRUrl(User user) {
+        return gAuth.qrCodeGoogleUrl("Ex3", user.getName(), user.getOtpSecret());
+    }
+
+    public int generateCode(User user) {
+        return gAuth.getTotpPassword(user.getOtpSecret());
+    }
 }

@@ -5,24 +5,25 @@
   <title>Login</title>
   <link th:href="@{/css/login.css}" rel="stylesheet" />
 </head>
-
 <body>
-<img th:src="${qrCode}" />
 <div class="login-box">
-  <h2>Login</h2>
-  <form method="post" action="/otp">
+  <h2>OTP인증</h2>
+  <form method="post" action="/otp-auth">
     <div class="user-box">
-      <input type="text" name="email" required="">
-      <label>이메일</label>
+      <input type="text" name="name" required="">
+      <label>이름</label>
     </div>
-    <button onclick="checkOtp()">OTP 인증
+    <div class="user-box">
+      <input type="password" name="otpSecret" required="">
+      <label>OTP번호</label>
+    </div>
+    <button type="submit">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      OTP 인증
+      인증
     </button>
-  </form>
 </div>
 </body>
 </html>

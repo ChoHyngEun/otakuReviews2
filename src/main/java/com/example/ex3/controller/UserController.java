@@ -11,13 +11,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -82,15 +79,36 @@ public class UserController {
     }
 
     @PostMapping("/otp-auth")
-    public String otpAuth(@RequestParam String name, @RequestParam String otpSecret, HttpSession session, Model model) {
+    public String otpAuth(@RequestParam String name, @RequestParam int otpCode, HttpSession session, Model model) {
         User user = userRepository.findByName(name);
-        if (user != null && user.getOtpSecret().equals(otpSecret)) {
+        if (user != null && userService.verifyCode(user, otpCode)) {
             session.setAttribute("user", user);
             return "redirect:/main";
         } else {
             model.addAttribute("error", "OTP 번호가 일치하지 않습니다.");
             return "otp-auth";
         }
+    }
+    @GetMapping("/otp")
+    public String otpForm() {
+        return "otp";
+    }
+
+    @PostMapping("/otp")
+    public String otp(@RequestParam String email, HttpSession session, Model model) {
+        User user = userRepository.findByEmail(email); // email로 유저 찾기
+        if (user != null) {
+            session.setAttribute("user", user);
+            return "redirect:/otp-c";
+        } else {
+            model.addAttribute("error", "존재하지 않는 email 입니다.");
+            return "otp";
+        }
+    }
+
+    @GetMapping("/otp-c")
+    public String otpC() {
+        return "otp-c";
     }
 
     // 10초마다 OtpSecret 필드에 랜덤한 값 삽입
@@ -108,5 +126,16 @@ public class UserController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/index";
+    }
+    @GetMapping("/generate-code")
+    @ResponseBody
+    public String generateCode(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "FAIL";
+        }
+
+        int code = userService.generateCode(user);
+        return Integer.toString(code);
     }
 }

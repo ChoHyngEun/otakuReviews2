@@ -11,7 +11,7 @@ public class SchedulerService {
     @Autowired
     private UserRepository userRepository;
 
-    @Scheduled(fixedRate = 10000) // 10초마다 실행
+    @Scheduled(fixedRate = 60000) // 60초마다 실행
     public void updateOtpSecret() {
         List<User> users = userRepository.findAll(); // 전체 사용자 조회
         for (User user : users) {
