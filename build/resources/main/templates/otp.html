@@ -2,25 +2,16 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>OTP 코드 생성</title>
   <link th:href="@{/css/login.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="login-box">
-  <h2>Login</h2>
-  <form method="post" action="/otp">
-    <div class="user-box">
-      <input type="text" name="email" required="">
-      <label>이메일</label>
-    </div>
-    <button type="submit">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      확인
-    </button>
-  </form>
+  <h2>OTP 코드 생성</h2>
+  <p>아래의 QR 코드를 스캔하여 OTP 앱에 등록하세요.</p>
+  <img th:src="${qrCodeUrl}" />
+  <br>
+  <a href="/main">메인 페이지로 가기</a>
 </div>
 </body>
 </html>
