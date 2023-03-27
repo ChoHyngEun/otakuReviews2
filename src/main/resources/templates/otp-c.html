@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>OTP 페이지</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // 매 60초마다 서버에서 OTP 번호를 가져와서 화면에 출력
+      setInterval(function() {
+        $.ajax({
+          url: "/get-otp",
+          success: function(data) {
+            var otp = data.otpSecret;
+            var changedAt = data.changedAt;
+            $("#otp-number").text(otp);
+            $("#changed-at").text(changedAt);
+          },
+          error: function(xhr, status, error) {
+            console.log(error);
+          }
+        });
+      }, 60000);
+    });
+  </script>
+</head>
+<body>
+<p th:text="${session.user.name}">User Name</p>
+<h1>아래는 당신의 OTP 번호입니다.</h1>
+<p>OTP 번호: <span id="otp-number">${session.user.otpSecret}</span></p>
+<p>마지막 변경 시간: <span id="changed-at">${session.user.otpChangedAt}</span></p>
+</body>
+</html>
