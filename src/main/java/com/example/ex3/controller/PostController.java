@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -26,18 +27,19 @@ public class PostController {
     public String showAllPosts(Model model) {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);
-        return "post/postList";
+        return "posts/postList";
     }
 
     @GetMapping("/post/write")
-    public String showWriteForm(Post post) {
-        return "post/writeForm";
+    public String showWriteForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/writeForm";
     }
 
     @PostMapping("/post/write")
     public String writePost(@Valid Post post, BindingResult bindingResult, HttpSession session) {
         if (bindingResult.hasErrors()) {
-            return "post/writeForm";
+            return "posts/writeForm";
         }
         User user = (User) session.getAttribute("user");
         post.setUser(user);
@@ -52,7 +54,7 @@ public class PostController {
             return "redirect:/post";
         }
         model.addAttribute("post", post);
-        return "post/postView";
+        return "posts/postView";
     }
 
     @GetMapping("/post/edit/{id}")
@@ -63,7 +65,7 @@ public class PostController {
             return "redirect:/post";
         }
         model.addAttribute("post", post);
-        return "post/editForm";
+        return "posts/editForm";
     }
 
     @PostMapping("/post/edit/{id}")
@@ -74,7 +76,7 @@ public class PostController {
             return "redirect:/post";
         }
         if (bindingResult.hasErrors()) {
-            return "post/editForm";
+            return "posts/editForm";
         }
         existingPost.setTitle(post.getTitle());
         existingPost.setContent(post.getContent());
@@ -92,4 +94,5 @@ public class PostController {
         postService.deletePost(id);
         return "redirect:/post";
     }
+
 }

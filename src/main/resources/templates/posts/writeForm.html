@@ -11,13 +11,13 @@
 <form th:object="${post}" method="post" th:action="@{/post/write}">
     <div>
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" th:field="${title}" required />
-        <div th:if="${#fields.hasErrors('title')}" th:errors="${title}"></div>
+        <input type="text" id="title" name="title" th:field="${post.title}" required />
+        <div th:if="${#fields.hasErrors('title')}" th:errors="${post.title}"></div>
     </div>
     <div>
         <label for="content">Content</label>
-        <textarea id="content" name="content" th:field="${content}" required></textarea>
-        <div th:if="${#fields.hasErrors('content')}" th:errors="${content}"></div>
+        <textarea id="content" name="content" th:field="${post.content}" required></textarea>
+        <div th:if="${#fields.hasErrors('content')}" th:errors="${post.content}"></div>
     </div>
     <button type="submit">Submit</button>
 </form>

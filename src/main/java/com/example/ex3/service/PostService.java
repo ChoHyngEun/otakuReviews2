@@ -33,4 +33,8 @@ public class PostService {
     public void deletePost(Long id) {
         postRepository.deleteById(id);
     }
+
+    public List<Post> findAllByDate() {
+        return postRepository.findAllByOrderByCreatedDateDesc();
+    }
 }

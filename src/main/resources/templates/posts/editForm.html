@@ -11,10 +11,10 @@
 
 <form th:action="@{/post/edit/{id}(id=${post.id})}" method="post">
     <label for="title">제목:</label><br>
-    <input type="text" th:field="*{title}" /><br><br>
+    <input type="text" th:field="${post.title}" /><br><br>
 
     <label for="content">내용:</label><br>
-    <textarea rows="10" cols="50" th:field="${content}"></textarea><br><br>
+    <textarea rows="10" cols="50" th:field="${post.content}"></textarea><br><br>
 
     <button type="submit">저장</button>
 </form>
