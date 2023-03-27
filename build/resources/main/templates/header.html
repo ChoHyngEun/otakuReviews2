@@ -14,11 +14,13 @@
     <th:block th:if="${session.user != null}">
       <li><a href="/profile" th:text="${session.user.username}"></a></li>
       <li><a href="/logout">Logout</a></li>
+      <li><a href="/post">게시판</a></li>
     </th:block>
     <!-- 로그인 상태가 아닐 때 -->
     <th:block th:if="${session.user == null}">
       <li><a href="/login">Login</a></li>
       <li><a href="/register">Register</a></li>
+      <li><a href="/post">게시판</a></li>
     </th:block>
   </ul>
 </div>

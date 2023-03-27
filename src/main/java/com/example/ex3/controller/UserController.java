@@ -3,6 +3,7 @@ package com.example.ex3.controller;
 import java.security.GeneralSecurityException;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -122,6 +123,7 @@ public class UserController {
         session.invalidate();
         return "redirect:/index";
     }
+
     @GetMapping("/generate-code")
     @ResponseBody
     public String generateCode(HttpSession session) {
@@ -133,4 +135,23 @@ public class UserController {
         int code = userService.generateCode(user);
         return Integer.toString(code);
     }
+//        @GetMapping("/logout")
+//        public String logout(HttpServletRequest request) {
+//            HttpSession session = request.getSession(false);
+//            if (session != null) {
+//                session.invalidate();
+//            }
+//            return "redirect:/login";
+//        }
+
+//    @Autowired
+//    private HttpSession httpSession;
+//
+//    @GetMapping("/logout")
+//    public String logout() {
+//        httpSession.invalidate();
+//        return "redirect:/login?logout=true";
+//    }
+
+
 }
