@@ -1,7 +1,10 @@
 package com.example.ex3.service;
 
+import com.warrenstrange.googleauth.GoogleAuthenticatorKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.warrenstrange.googleauth.GoogleAuthenticator;
+import com.warrenstrange.googleauth.GoogleAuthenticatorQRGenerator;
 
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
@@ -47,12 +50,6 @@ public class UserService {
             throw new RuntimeException(e);
         }
     }
-    public void updateOtpSecret(User user) {
-        Random rand = new Random();
-        int otp = rand.nextInt(900000) + 100000; // 100000~999999 사이의 랜덤 숫자 생성
-        user.setOtpSecret(Integer.toString(otp));
-        userRepository.save(user);
-    }
     public User authenticate(String username, String password) {
         User user = userRepository.findByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
@@ -68,10 +65,22 @@ public class UserService {
     }
 
     public String generateQRUrl(User user) {
-        return gAuth.qrCodeGoogleUrl("Ex3", user.getName(), user.getOtpSecret());
+        GoogleAuthenticator gAuth = new GoogleAuthenticator();
+        GoogleAuthenticatorKey key = gAuth.createCredentials();
+        user.setOtpSecret(key.getKey());
+        userRepository.save(user);
+        return GoogleAuthenticatorQRGenerator.getOtpAuthURL("Ex3", user.getName(), key);
     }
-
+    private GoogleAuthenticatorKey createGoogleAuthenticatorKey(String otpSecret) {
+        return new GoogleAuthenticatorKey.Builder(otpSecret).build();
+    }
     public int generateCode(User user) {
         return gAuth.getTotpPassword(user.getOtpSecret());
+    }
+    public void updateOtpSecret(User user) {
+        GoogleAuthenticator gAuth = new GoogleAuthenticator();
+        GoogleAuthenticatorKey key = gAuth.createCredentials();
+        user.setOtpSecret(key.getKey());
+        userRepository.save(user);
     }
 }

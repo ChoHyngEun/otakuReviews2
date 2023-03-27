@@ -1,13 +1,14 @@
 package com.example.ex3.controller;
 
+import java.security.GeneralSecurityException;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.example.ex3.service.UserService;
+import com.warrenstrange.googleauth.GoogleAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -74,14 +75,40 @@ public class UserController {
         return "redirect:/otp-auth";
     }
     @GetMapping("/otp-auth")
-    public String otpAuthForm() {
+    public String otpForm(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            // 사용자가 로그인하지 않은 경우
+            return "redirect:/login";
+        }
+
+        // 사용자가 OTP 등록되어 있는 경우
+        if (user.getOtpSecret() != null && !user.getOtpSecret().matches("[0-9]{6}")) {
+            model.addAttribute("otpEnabled", false);
+            return "otp-auth";
+        } else if (user.getOtpSecret() != null && user.getOtpSecret().matches("[0-9]{6}")) {
+            model.addAttribute("otpEnabled", true);
+            String qrCodeUrl = userService.generateQRUrl(user);
+            model.addAttribute("qrCodeUrl", qrCodeUrl);
+            return "otp-auth";
+        }
         return "otp-auth";
     }
-
     @PostMapping("/otp-auth")
-    public String otpAuth(@RequestParam String name, @RequestParam int otpCode, HttpSession session, Model model) {
-        User user = userRepository.findByName(name);
-        if (user != null && userService.verifyCode(user, otpCode)) {
+    public String otpAuth(@RequestParam String otpCode, HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        GoogleAuthenticator gAuth = new GoogleAuthenticator();
+        boolean isCodeValid = false;
+        try {
+            int code = Integer.parseInt(otpCode);
+            isCodeValid = gAuth.authorize(user.getOtpSecret(), code);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (isCodeValid) {
             session.setAttribute("user", user);
             return "redirect:/main";
         } else {
@@ -89,39 +116,7 @@ public class UserController {
             return "otp-auth";
         }
     }
-    @GetMapping("/otp")
-    public String otpForm() {
-        return "otp";
-    }
 
-    @PostMapping("/otp")
-    public String otp(@RequestParam String email, HttpSession session, Model model) {
-        User user = userRepository.findByEmail(email); // email로 유저 찾기
-        if (user != null) {
-            session.setAttribute("user", user);
-            return "redirect:/otp-c";
-        } else {
-            model.addAttribute("error", "존재하지 않는 email 입니다.");
-            return "otp";
-        }
-    }
-
-    @GetMapping("/otp-c")
-    public String otpC() {
-        return "otp-c";
-    }
-
-    // 10초마다 OtpSecret 필드에 랜덤한 값 삽입
-    @Scheduled(fixedDelay = 60000) // 60초마다 실행
-    public void changeOtpSecret() {
-        Iterable<User> users = userRepository.findAll();
-        Random rand = new Random();
-        for (User user : users) {
-            int otp = rand.nextInt(900000) + 100000; // 100000~999999 사이의 랜덤 숫자 생성
-            user.setOtpSecret(Integer.toString(otp));
-            userRepository.save(user);
-        }
-    }
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();

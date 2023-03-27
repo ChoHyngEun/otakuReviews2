@@ -9,7 +9,8 @@ import com.example.ex3.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
-    User findByName(String name);
 
     User findByEmail(String email);
+
+    boolean existsByOtpSecretIsNotNullAndIdEquals(Long id);
 }

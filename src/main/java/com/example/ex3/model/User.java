@@ -3,7 +3,6 @@ package com.example.ex3.model;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -38,7 +37,6 @@ public class User {
     private String otpSecret;
 
     public User() {
-        this.otpSecret = generateRandomOtpSecret();
     }
 
     public User(String username, String password, String name, String email) {
@@ -46,13 +44,8 @@ public class User {
         this.password = password;
         this.name = name;
         this.email = email;
-        this.otpSecret = generateRandomOtpSecret();
     }
 
-    private String generateRandomOtpSecret() {
-        // 6자리 랜덤 숫자 생성
-        return String.format("%06d", (int) (Math.random() * 999999));
-    }
 
     public Long getId() {
         return id;
@@ -102,9 +95,4 @@ public class User {
         this.otpSecret = otpSecret;
     }
 
-    public void updateOtpSecret() {
-        // 6자리 랜덤 숫자 생성
-        String newOtpSecret = String.format("%06d", (int) (Math.random() * 999999));
-        this.setOtpSecret(newOtpSecret);
-    }
 }
