@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link th:href="@{/css/login.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="login-box">
+  <h2>Login</h2>
+  <form method="post" action="/otp">
+    <div class="user-box">
+      <input type="text" name="email" required="">
+      <label>이메일</label>
+    </div>
+    <button type="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      확인
+    </button>
+  </form>
+</div>
+</body>
+</html>

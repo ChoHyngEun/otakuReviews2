@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link th:href="@{/css/login.css}" rel="stylesheet" />
+</head>
+
+<body>
+<img th:src="${qrCode}" />
+<div class="login-box">
+  <h2>Login</h2>
+  <form method="post" action="/otp">
+    <div class="user-box">
+      <input type="text" name="email" required="">
+      <label>이메일</label>
+    </div>
+    <button onclick="checkOtp()">OTP 인증
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      OTP 인증
+    </button>
+  </form>
+</div>
+</body>
+</html>

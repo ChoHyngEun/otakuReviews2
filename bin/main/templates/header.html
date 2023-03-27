@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Header</title>
+</head>
+<body>
+<div>
+  <h1>Header</h1>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <!-- 로그인 상태일 때 -->
+    <th:block th:if="${session.user != null}">
+      <li><a href="/profile" th:text="${session.user.username}"></a></li>
+      <li><a href="/logout">Logout</a></li>
+    </th:block>
+    <!-- 로그인 상태가 아닐 때 -->
+    <th:block th:if="${session.user == null}">
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+    </th:block>
+  </ul>
+</div>
+</body>
+</html>
