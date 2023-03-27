@@ -23,7 +23,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/index")) {
+        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/index") && !requestURI.equals("/signup")) {
             response.sendRedirect("/login");
             return false;
         } else if (user != null && requestURI.equals("/main")) {
@@ -32,13 +32,14 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         // 예외 페이지 설정
-        if (requestURI.equals("/index") || requestURI.equals("/")) {
+        if (requestURI.equals("/index") || requestURI.equals("/") || requestURI.equals("/signup")) {
             return true;
         }
 
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         return false;
     }
+
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {

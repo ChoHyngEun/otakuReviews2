@@ -18,7 +18,6 @@
 
     <label for="passwordConfirm">비밀번호 확인</label>
     <input type="password" id="passwordConfirm" name="passwordConfirm" required />
-    <p th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></p>
 
     <label for="name">이름</label>
     <input type="text" id="name" name="name" required th:value="*{name}" />
