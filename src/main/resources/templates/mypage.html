@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet" />
+</head>
+<body>
+<header>
+    <h1>마이페이지</h1>
+</header>
+
+<nav>
+    <a href="/">홈</a>
+</nav>
+
+<section>
+    <h2>내 정보</h2>
+    <table>
+        <tr>
+            <th>사용자 이름</th>
+            <td th:text="${user.username}"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td th:text="${user.name}"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td th:text="${user.email}"></td>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    <p>© 2023. All rights reserved.</p>
+</footer>
+</body>
+</html>

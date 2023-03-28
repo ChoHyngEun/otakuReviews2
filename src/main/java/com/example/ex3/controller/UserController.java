@@ -3,6 +3,7 @@ package com.example.ex3.controller;
 import java.security.GeneralSecurityException;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -50,16 +51,11 @@ public class UserController {
     public String loginForm(Model model) {
         return "login";
     }
-    @GetMapping("/main")
-    public String MainForm(Model model) {
-        return "main";
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 현재 사용자의 세션을 모두 제거
+        return "redirect:/"; // 메인 페이지로 리다이렉트
     }
-    @GetMapping("/index")
-    public String IndexForm(Model model) {
-        return "index";
-    }
-
-
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, HttpSession session) {
@@ -74,6 +70,29 @@ public class UserController {
         // OTP 인증 페이지로 이동
         return "redirect:/otp-auth";
     }
+
+    @GetMapping("/index")
+    public String main(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("user", user);
+        return "index";
+    }
+    @GetMapping("/mypage")
+    public String mypage(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        return "mypage";
+    }
+
+
+
     @GetMapping("/otp-auth")
     public String otpForm(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
@@ -110,18 +129,13 @@ public class UserController {
         }
         if (isCodeValid) {
             session.setAttribute("user", user);
-            return "redirect:/main";
+            return "redirect:/index";
         } else {
             model.addAttribute("error", "OTP 번호가 일치하지 않습니다.");
             return "otp-auth";
         }
     }
 
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/index";
-    }
     @GetMapping("/generate-code")
     @ResponseBody
     public String generateCode(HttpSession session) {
