@@ -4,7 +4,6 @@ otakuReviews 프로젝트에 이어, 팀원 한명이 더 추가되었고, 이�
 Start Date: 03/23/2023<br>
 ![1679561792128](https://user-images.githubusercontent.com/116807050/227152659-6518259d-7d8f-47c7-b4a3-c68f205cb1da.jpg)
 <br>
-![20230328_093428](https://user-images.githubusercontent.com/116807050/228097087-b2b5bde1-c7d9-4ee2-8f58-28752da13fcf.jpg)
 
 <br>
 팀명:   <br>
