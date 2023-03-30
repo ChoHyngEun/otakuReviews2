@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
+  <!--지도-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -67,9 +71,8 @@
   </div>
 </section>
 
-<footer>
-  <p>© 2023. All rights reserved.</p>
-</footer>
+<!--지도-->
+<div id="map" style="height: 500px;"></div>
 
 <!-- WebSocket 관련 코드 -->
 <script>
@@ -92,10 +95,8 @@
   webSocket.onclose = function(event) {
     console.log("WebSocket 연결 종료");
   };
-</script>
 
-<!-- 채팅 메시지 전송 -->
-<script>
+  // 채팅 메시지 전송
   function sendMessage() {
     const inputElement = document.querySelector("#chat-form input");
     const message = inputElement.value;
@@ -108,18 +109,65 @@
     event.preventDefault();
     sendMessage();
   });
-</script>
 
-<!-- 채팅 메시지 출력 -->
-<script>
-  function printMessage(message) {
-    const messageElement = document.createElement("div");
-    messageElement.innerText = message;
-    document.getElementById("chat-messages").appendChild(messageElement);
-  }
-
+  // 채팅 메시지 출력
   webSocket.onmessage = function(event) {
     const message = event.data;
     printMessage(message);
   };
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var userLat = position.coords.latitude;
+    var userLng = position.coords.longitude;
+
+    // 지도를 생성합니다.
+    var map = L.map('map').setView([userLat, userLng], 13);
+
+// 지도에 타일 레이어를 추가합니다.
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      tileSize: 512,
+      zoomOffset: -1
+    }).addTo(map);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/stores', true);
+    xhr.responseType = 'json'; // 서버에서 반환하는 응답의 타입을 'json'으로 설정
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var stores = xhr.response;
+
+        if (stores !== null) {
+          // 이후 처리 로직
+          for (var i = 0; i < stores.length; i++) {
+            var store = stores[i];
+            var storeLat = store.latitude;
+            var storeLng = store.longitude;
+            var storeName = store.name;
+
+            var storeMarker = L.marker([storeLat, storeLng]).addTo(map);
+            storeMarker.bindPopup(storeName);
+          }
+        } else {
+          console.error('서버에서 받은 매장 데이터가 null입니다. 데이터 형식을 확인해주세요.');
+        }
+      } else {
+        console.error('서버에서 매장 데이터를 가져오는데 실패했습니다. 상태 코드:', xhr.status);
+      }
+    };
+
+    xhr.send();
+
+// 유저 위치를 마커로 표시합니다.
+    var userMarker = L.marker([userLat, userLng]).addTo(map);
+    userMarker.bindPopup("Your Location");
+
+  });
 </script>
+
+<footer>
+  <p>© 2023. All rights reserved.</p>
+</footer>
+</body>
+</html>
