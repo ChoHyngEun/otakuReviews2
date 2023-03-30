@@ -47,6 +47,7 @@ public class User {
     }
 
 
+
     public Long getId() {
         return id;
     }
@@ -94,5 +95,11 @@ public class User {
     public void setOtpSecret(String otpSecret) {
         this.otpSecret = otpSecret;
     }
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
+    }
 
+    public boolean checkPassword(String passwordToCheck) {
+        return this.password.equals(passwordToCheck);
+    }
 }

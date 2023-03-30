@@ -83,4 +83,23 @@ public class UserService {
         user.setOtpSecret(key.getKey());
         userRepository.save(user);
     }
+
+    public boolean changePassword(String email, String currentPassword, String newPassword) {
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            // 사용자를 찾을 수 없음
+            return false;
+        }
+
+        if (!user.checkPassword(currentPassword)) {
+            // 현재 비밀번호가 일치하지 않음
+            return false;
+        }
+
+        user.changePassword(newPassword);
+        userRepository.save(user);
+
+        return true;
+    }
 }

@@ -2,9 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Main Page</title> 
-  <script src="@{js/index.js}"></script>
-  <link th:href="@{/css/index2.css}" rel="stylesheet" />
+  <title>Main Page</title>
+  <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -34,16 +33,16 @@
   </div>
 
   <!-- 로그인/회원가입 UI -->
-  <div class="login-container">
+  <div class="login-container" th:if="${session.user == null}">
     <div class="login-buttons">
       <a id="login-btn" href="/login">로그인</a>
       <a id="signup-btn" href="/signup">회원가입</a>
     </div>
   </div>
-  <div class="login-container" th:if="${user != null}">
+  <div class="login-container" th:if="${session.user != null}">
     <div class="login-buttons">
-      <a id="logout-btn" href="/">로그아웃</a>
-      <a id="mypage-btn" href="/mypage" th:if="${user.getOtpSecret() != null}">내정보</a>
+      <a id="logout-btn" href="/logout">로그아웃</a>
+      <a id="mypage-btn" href="/mypage">내 정보</a>
     </div>
   </div>
 
@@ -70,5 +69,6 @@
   <footer>
     <p>© 2023. All rights reserved.</p>
   </footer>
+
 </body>
 </html>

@@ -1,3 +1,7 @@
+const errorMessage = document.querySelector(".error-message");
+    if (errorMessage !== null) {
+        alert(errorMessage.textContent);
+    }
 function checkOtp() {
   $.get("/generate-code", function(data) {
     var code = prompt("OTP 번호를 입력하세요.");
