@@ -35,10 +35,9 @@
             <th>비밀번호 변경</th>
             <td>
                 <form id="ch_pwd_f" action="/ch_pwd" method="post">
+                    <label for="cur_pwd">현재 비밀번호:</label>
+                    <input type="password" id="cur_pwd" name="cur_pwd" required th:attr="data-password=${session.user.password}">
                     <div id="new_pwd-field" style="display:none">
-                        <label for="cur_pwd">현재 비밀번호:</label>
-                        <input type="password" id="cur_pwd" name="cur_pwd" required>
-                        <br>
                         <label for="new_pwd">새 비밀번호:</label>
                         <input type="password" id="new_pwd" name="new_pwd" required>
                         <br>
@@ -46,7 +45,10 @@
                         <input type="password" id="con_pwd" name="con_pwd" required>
                         <br>
                     </div>
-                    <div id="error-message" class="error-message" th:text="${errorMessage}" style="display:none"></div>
+                    <div id="error_message" class="message" style="display:none"></div>
+                    <div th:if="${error_Message}" class="message" th:text="${error_Message}" style="display:none"></div>
+                    <div th:if="${error_Message2}" class="message" th:text="${error_Message2}" style="display:none"></div>
+                    <div th:if="${success_Message}" class="message" th:text="${success_Message}" ></div>
                     <button id="change-password-btn" type="button">비밀번호 변경</button>
                     <button id="submit-password-btn" type="submit" style="display:none">변경</button>
                 </form>
