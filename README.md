@@ -32,3 +32,5 @@ spring.datasource.password=Tkfkdgo450.<br>
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver<br>
 <br>
 세 줄 요약: 포트는 8094이고, 우리 파일 데이터베이스 연동을 위해서는 아시다시피 마리아 db에서 사용자 추가해서 otakuadmin 이라는 새계정을 만들어야하며, 그 계정의 데이터베이스중에 otaku2라는 데이터베이스를 하나 추가하시면 됩니다.<br>
+WebMvcConfig 클래스에 authIntercepter 에러뜨시면 설정에서 Facet default context로 import 하시면 됩니다<br>
+
