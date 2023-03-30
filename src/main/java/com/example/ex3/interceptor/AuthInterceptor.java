@@ -23,16 +23,16 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/index") && !requestURI.equals("/signup")  && !requestURI.equals("/otp")  && !requestURI.equals("/otp-c")) {
+        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") ) {
             response.sendRedirect("/login");
             return false;
-        } else if (user != null && requestURI.equals("/main")) {
-            // 사용자 인증 정보가 있는 경우 "/main" 요청에 대해서는 리다이렉트를 시키지 않음
+        } else if (user != null && requestURI.equals("/")) {
+            // 사용자 인증 정보가 있는 경우 "/" 요청에 대해서는 리다이렉트를 시키지 않음
             return true;
         }
 
         // 예외 페이지 설정
-        if (requestURI.equals("/index") || requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp") || requestURI.equals("/otp-c")) {
+        if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp")) {
             return true;
         }
 
