@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet" />
+    <script src="/js/mypage.js"></script>
+</head>
+<body>
+<header>
+    <h1>마이페이지</h1>
+</header>
+
+<nav>
+    <a href="/">홈</a>
+    <a href="/logout">로그아웃</a>
+</nav>
+
+<section>
+    <h2>내 정보</h2>
+    <table>
+        <tr>
+            <th>사용자 이름</th>
+            <td th:text="${session.user.username}"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td th:text="${session.user.name}"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td th:text="${session.user.email}"></td>
+        </tr>
+        <tr>
+            <th>비밀번호 변경</th>
+            <td>
+                <form id="ch_pwd_f" action="/ch_pwd" method="post">
+                    <div id="new_pwd-field" style="display:none">
+                        <label for="cur_pwd">현재 비밀번호:</label>
+                        <input type="password" id="cur_pwd" name="cur_pwd" required>
+                        <br>
+                        <label for="new_pwd">새 비밀번호:</label>
+                        <input type="password" id="new_pwd" name="new_pwd" required>
+                        <br>
+                        <label for="con_pwd">새 비밀번호 확인:</label>
+                        <input type="password" id="con_pwd" name="con_pwd" required>
+                        <br>
+                    </div>
+                    <div id="error-message" class="error-message" th:text="${errorMessage}" style="display:none"></div>
+                    <button id="change-password-btn" type="button">비밀번호 변경</button>
+                    <button id="submit-password-btn" type="submit" style="display:none">변경</button>
+                </form>
+            </td>
+        </tr>
+
+    </table>
+</section>
+
+<footer>
+    <p>© 2023. All rights reserved.</p>
+</footer>
+</body>
+</html>

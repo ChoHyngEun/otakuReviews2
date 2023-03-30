@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main Page</title>
+  <link th:href="@{/css/index.css}" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>메인 페이지</h1>
+  </header>
+  
+  <nav>
+    <a href="#">스타벅스</a>
+    <a href="#">메가커피</a>
+    <a href="#">빽다방</a>
+    <a href="#">이디아</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <!-- 채팅 UI -->
+  <div id="chat-container">
+    <div id="chat-header">
+      <h2>채팅</h2>
+    </div>
+    <div id="chat-messages">
+      <!-- 메시지 출력 -->
+    </div>
+    <form id="chat-form">
+      <input type="text" placeholder="메시지를 입력하세요">
+      <button type="submit">전송</button>
+    </form>
+  </div>
+
+  <!-- 로그인/회원가입 UI -->
+  <div class="login-container" th:if="${session.user == null}">
+    <div class="login-buttons">
+      <a id="login-btn" href="/login">로그인</a>
+      <a id="signup-btn" href="/signup">회원가입</a>
+    </div>
+  </div>
+  <div class="login-container" th:if="${session.user != null}">
+    <div class="login-buttons">
+      <a id="logout-btn" href="/logout">로그아웃</a>
+      <a id="mypage-btn" href="/mypage">내 정보</a>
+    </div>
+  </div>
+
+  <section>
+    <div>
+      <h2>스타벅스</h2>
+      <p>서비스1의 설명입니다.</p>
+      <a href="#">스타벅스</a>
+    </div>
+    <div>
+      <h2>메가커피</h2>
+      <p>서비스2의 설명입니다.</p>
+    </div>
+    <div>
+      <h2>빽다방</h2>
+      <p>서비스3의 설명입니다.</p>
+    </div>
+    <div>
+      <h2>이디아</h2>
+      <p>서비스3의 설명입니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2023. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
