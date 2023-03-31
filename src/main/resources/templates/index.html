@@ -73,6 +73,51 @@
     </div>
   </section>
 
+  <!-- WebSocket 관련 코드 -->
+  <script>
+
+    // WebSocket 연결 생성
+    const webSocket = new WebSocket("ws://" + window.location.host + "/chat");
+
+    // 채팅 메시지 출력 함수
+    function printMessage(message) {
+      const messageElement = document.createElement("div");
+      messageElement.innerText = message;
+      document.getElementById("chat-messages").appendChild(messageElement);
+    }
+
+    // WebSocket 연결 성공 시 실행될 함수
+    webSocket.onopen = function(event) {
+      console.log("WebSocket 연결 성공");
+    };
+
+    // WebSocket 연결 종료 시 실행될 함수
+    webSocket.onclose = function(event) {
+      console.log("WebSocket 연결 종료");
+    };
+
+    // 채팅 메시지 전송
+    function sendMessage() {
+      const inputElement = document.querySelector("#chat-form input");
+      const message = inputElement.value;
+      webSocket.send(message);
+      inputElement.value = "";
+    }
+
+    const formElement = document.getElementById("chat-form");
+    formElement.addEventListener("submit", function(event) {
+      event.preventDefault();
+      sendMessage();
+    });
+
+    // 채팅 메시지 출력
+    webSocket.onmessage = function(event) {
+      const message = event.data;
+      printMessage(message);
+    };
+
+  </script>
+
 </body>
 
 <footer>
