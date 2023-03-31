@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
 </head>
+
 <body>
 
   <header>
@@ -34,7 +36,6 @@
   </form>
 </div>
 
-
 <!-- 로그인/회원가입 UI -->
 <div class="login-container" th:if="${session.user == null}">
   <div class="login-buttons">
@@ -52,72 +53,67 @@
   <section>
     <div>
       <h2>스타벅스</h2>
-      <p>서비스1의 설명입니다.</p>
+      <p>스타벅스 너무 맛있는데 어우 너무 비싸 어우</p>
       <a href="#">스타벅스</a>
     </div>
     <div>
       <h2>메가커피</h2>
-      <p>서비스2의 설명입니다.</p>
+      <p>메가커피당 가격도 ㄱㅊ</p>
       <a href="#">메가커피</a>
     </div>
     <div>
       <h2>빽다방</h2>
-      <p>서비스3의 설명입니다.</p>
+      <p>어둠의 마법사가 애용함</p>
       <a href="#">빽다방</a>
     </div>
     <div>
       <h2>이디야</h2>
-      <p>서비스4의 설명입니다.</p>
+      <p>이디야 너 어디야</p>
       <a href="#">이디야</a>
     </div>
   </section>
+  <!-- WebSocket 관련 코드 -->
+  <script>
+    // WebSocket 연결 생성
+    const webSocket = new WebSocket("ws://" + window.location.host + "/chat");
+    // 채팅 메시지 출력 함수
+    function printMessage(message) {
+      const messageElement = document.createElement("div");
+      messageElement.innerText = message;
+      document.getElementById("chat-messages").appendChild(messageElement);
+    }
+    // WebSocket 연결 성공 시 실행될 함수
+    webSocket.onopen = function(event) {
+      console.log("WebSocket 연결 성공");
+    };
+    // WebSocket 연결 종료 시 실행될 함수
+    webSocket.onclose = function(event) {
+      console.log("WebSocket 연결 종료");
+    };
+    // 채팅 메시지 전송
+    function sendMessage() {
+      const inputElement = document.querySelector("#chat-form input");
+      const message = inputElement.value;
+      webSocket.send(message);
+      inputElement.value = "";
+    }
+    const formElement = document.getElementById("chat-form");
+    formElement.addEventListener("submit", function(event) {
+      event.preventDefault();
+      sendMessage();
+    });
+    // 채팅 메시지 출력
+    webSocket.onmessage = function(event) {
+      const message = event.data;
+      printMessage(message);
+    };
+  </script>
 
-<!-- WebSocket 관련 코드 -->
-<script>
-  // WebSocket 연결 생성
-  const webSocket = new WebSocket("ws://" + window.location.host + "/chat");
 
-  // 채팅 메시지 출력 함수
-  function printMessage(message) {
-    const messageElement = document.createElement("div");
-    messageElement.innerText = message;
-    document.getElementById("chat-messages").appendChild(messageElement);
-  }
-
-  // WebSocket 연결 성공 시 실행될 함수
-  webSocket.onopen = function(event) {
-    console.log("WebSocket 연결 성공");
-  };
-
-  // WebSocket 연결 종료 시 실행될 함수
-  webSocket.onclose = function(event) {
-    console.log("WebSocket 연결 종료");
-  };
-
-  // 채팅 메시지 전송
-  function sendMessage() {
-    const inputElement = document.querySelector("#chat-form input");
-    const message = inputElement.value;
-    webSocket.send(message);
-    inputElement.value = "";
-  }
-
-  const formElement = document.getElementById("chat-form");
-  formElement.addEventListener("submit", function(event) {
-    event.preventDefault();
-    sendMessage();
-  });
-
-  // 채팅 메시지 출력
-  webSocket.onmessage = function(event) {
-    const message = event.data;
-    printMessage(message);
-  };
-
-</script>
+</body>
 
 <footer>
   <p>© 2023. All rights reserved.</p>
 </footer>
-</body>
+
 </html>
