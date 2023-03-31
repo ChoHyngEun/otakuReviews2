@@ -1,19 +1,15 @@
 package com.example.ex3.controller;
 
 import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import com.example.ex3.service.UserService;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
 
