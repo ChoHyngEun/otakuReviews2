@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
-  <!--지도-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
 </head>
 <body>
+
   <header>
     <h1>메인 페이지</h1>
   </header>
@@ -60,113 +58,19 @@
     <div>
       <h2>메가커피</h2>
       <p>서비스2의 설명입니다.</p>
+      <a href="#">메가커피</a>
     </div>
     <div>
       <h2>빽다방</h2>
       <p>서비스3의 설명입니다.</p>
+      <a href="#">빽다방</a>
     </div>
     <div>
-      <h2>이디아</h2>
-      <p>서비스3의 설명입니다.</p>
+      <h2>이디야</h2>
+      <p>서비스4의 설명입니다.</p>
+      <a href="#">이디야</a>
     </div>
   </section>
-  <!--지도-->
-  <div id="map" style="height: 500px;"></div>
-
-  <!-- WebSocket 관련 코드 -->
-  <script>
-  // WebSocket 연결 생성
-  const webSocket = new WebSocket("ws://" + window.location.host + "/chat");
-
-  // 채팅 메시지 출력 함수
-  function printMessage(message) {
-    const messageElement = document.createElement("div");
-    messageElement.innerText = message;
-    document.getElementById("chat-messages").appendChild(messageElement);
-  }
-
-  // WebSocket 연결 성공 시 실행될 함수
-  webSocket.onopen = function(event) {
-    console.log("WebSocket 연결 성공");
-  };
-
-  // WebSocket 연결 종료 시 실행될 함수
-  webSocket.onclose = function(event) {
-    console.log("WebSocket 연결 종료");
-  };
-
-  // 채팅 메시지 전송
-  function sendMessage() {
-    const inputElement = document.querySelector("#chat-form input");
-    const message = inputElement.value;
-    webSocket.send(message);
-    inputElement.value = "";
-  }
-
-  const formElement = document.getElementById("chat-form");
-  formElement.addEventListener("submit", function(event) {
-    event.preventDefault();
-    sendMessage();
-  });
-
-  // 채팅 메시지 출력
-  webSocket.onmessage = function(event) {
-    const message = event.data;
-    printMessage(message);
-  };
-
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var userLat = position.coords.latitude;
-    var userLng = position.coords.longitude;
-
-    // 지도를 생성합니다.
-    var map = L.map('map').setView([userLat, userLng], 13);
-
-// 지도에 타일 레이어를 추가합니다.
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      tileSize: 512,
-      zoomOffset: -1
-    }).addTo(map);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/stores', true);
-    xhr.responseType = 'json'; // 서버에서 반환하는 응답의 타입을 'json'으로 설정
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        var stores = xhr.response;
-
-        if (stores !== null) {
-          // 이후 처리 로직
-          for (var i = 0; i < stores.length; i++) {
-            var store = stores[i];
-            var storeLat = store.latitude;
-            var storeLng = store.longitude;
-            var storeName = store.name;
-
-            var storeMarker = L.marker([storeLat, storeLng]).addTo(map);
-            storeMarker.bindPopup(storeName);
-          }
-        } else {
-          console.error('서버에서 받은 매장 데이터가 null입니다. 데이터 형식을 확인해주세요.');
-        }
-      } else {
-        console.error('서버에서 매장 데이터를 가져오는데 실패했습니다. 상태 코드:', xhr.status);
-      }
-    };
-
-    xhr.send();
-
-// 유저 위치를 마커로 표시합니다.
-    var userMarker = L.marker([userLat, userLng]).addTo(map);
-    userMarker.bindPopup("Your Location");
-
-  });
-</script>
-  <footer>
-    <p>© 2023. All rights reserved.</p>
-  </footer>
 
 <!-- WebSocket 관련 코드 -->
 <script>
@@ -210,54 +114,6 @@
     printMessage(message);
   };
 
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var userLat = position.coords.latitude;
-    var userLng = position.coords.longitude;
-
-    // 지도를 생성합니다.
-    var map = L.map('map').setView([userLat, userLng], 13);
-
-// 지도에 타일 레이어를 추가합니다.
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      tileSize: 512,
-      zoomOffset: -1
-    }).addTo(map);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/stores', true);
-    xhr.responseType = 'json'; // 서버에서 반환하는 응답의 타입을 'json'으로 설정
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        var stores = xhr.response;
-
-        if (stores !== null) {
-          // 이후 처리 로직
-          for (var i = 0; i < stores.length; i++) {
-            var store = stores[i];
-            var storeLat = store.latitude;
-            var storeLng = store.longitude;
-            var storeName = store.name;
-
-            var storeMarker = L.marker([storeLat, storeLng]).addTo(map);
-            storeMarker.bindPopup(storeName);
-          }
-        } else {
-          console.error('서버에서 받은 매장 데이터가 null입니다. 데이터 형식을 확인해주세요.');
-        }
-      } else {
-        console.error('서버에서 매장 데이터를 가져오는데 실패했습니다. 상태 코드:', xhr.status);
-      }
-    };
-
-    xhr.send();
-
-// 유저 위치를 마커로 표시합니다.
-    var userMarker = L.marker([userLat, userLng]).addTo(map);
-    userMarker.bindPopup("Your Location");
-
-  });
 </script>
 
 <footer>
