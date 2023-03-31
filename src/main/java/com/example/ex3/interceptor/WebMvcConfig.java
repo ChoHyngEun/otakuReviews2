@@ -1,3 +1,4 @@
+/*
 package com.example.ex3.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
 
-}
+}*/

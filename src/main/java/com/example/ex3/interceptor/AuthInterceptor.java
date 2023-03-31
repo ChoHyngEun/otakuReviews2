@@ -1,3 +1,4 @@
+/*
 package com.example.ex3.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +24,8 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp")) {
-            response.sendRedirect("/login");
+        if (user == null && !requestURI.equals("/user/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") ) {
+            response.sendRedirect("/user/login");
             return false;
         } else if (user != null && requestURI.equals("/")) {
             // 사용자 인증 정보가 있는 경우 "/" 요청에 대해서는 리다이렉트를 시키지 않음
@@ -48,4 +49,4 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
     }
 
-}
+}*/
