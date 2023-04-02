@@ -4,21 +4,7 @@
   <meta charset="UTF-8">
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
-  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-          integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
-  <!-- Kakao SDK 로드 -->
-  <script src="//developers.kakao.com/sdk/js/kakao.js"></script>
-  <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2676b9b7ab5b8b2c4456353091a5faa7&libraries=services"
-  ></script>
-  <script>
-    // Kakao.init() 호출
-    Kakao.init("2676b9b7ab5b8b2c4456353091a5faa7");
-    //확인
-    console.log(Kakao.isInitialized());
-  </script>
-
+  <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," >
 </head>
 <body>
 <header>
@@ -62,34 +48,32 @@
   <div>
     <h2>스타벅스</h2>
     <p>스타벅스 너무 맛있는데 어우 너무 비싸 어우</p>
-    <a href="#">스타벅스</a>
-    <button class="store-btn" data-brand="starbucks">매장 검색</button>
+    <a href="#">스타벅스</a><br>
+    <a href="/map/starbucks">매장검색</a>
     <ul id="starbucks"></ul>
   </div>
   <div>
     <h2>메가커피</h2>
     <p>메가커피당 가격도 ㄱㅊ</p>
-    <a href="#">메가커피</a>
-    <button class="store-btn" data-brand="mega">매장 검색</button>
+    <a href="#">메가커피</a><br>
+    <a href="/map/mega">매장검색</a>
     <ul id="mega"></ul>
   </div>
   <div>
     <h2>빽다방</h2>
     <p>어둠의 마법사가 애용함</p>
-    <a href="#">빽다방</a>
-    <button class="store-btn" data-brand="paik">매장 검색</button>
+    <a href="#">빽다방</a><br>
+    <a href="/map/paik">매장검색</a>
     <ul id="paik"></ul>
   </div>
   <div>
     <h2>이디야</h2>
     <p>이디야 너 어디야</p>
-    <a href="#">이디야</a>
-    <button class="store-btn" data-brand="ediya">매장 검색</button>
+    <a href="#">이디야</a><br>
+    <a href="/map/ediya">매장검색</a>
     <ul id="ediya"></ul>
   </div>
 </section>
-<!-- 지도 UI -->
-<div id="map" style="width:100%; height:500px;"></div>
 <!-- WebSocket 관련 코드 -->
 <script>
   // WebSocket 연결 생성
@@ -130,56 +114,6 @@
     var message = event.data;
     printMessage(message);
   };
-
-  // var kakao = window.kakao;
-
-  // 매장 검색 버튼 클릭 시 실행될 함수
-  function searchStores(brand) {
-    var url = `https://dapi.kakao.com/v2/local/search/category.json?category_group_code=CE7&query=${brand}`;
-    var options = {
-      headers: {
-        Authorization: "KakaoAK 2676b9b7ab5b8b2c4456353091a5faa7"
-      }
-    };
-    fetch(url, options)
-            .then(response => response.json())
-            .then(data => {
-
-              // 해당 위치로 지도 이동
-              var mapContainer = document.getElementById("map");
-              var mapOption = {
-                center: new kakao.maps.LatLng(data[0].y, data[0].x), // y, x 순서로 변경
-                level: 3
-              };
-              // 지도 생성
-              var map = new kakao.maps.Map(mapContainer, mapOption);
-
-              // 검색 결과를 마커와 인포윈도우로 표시
-              for (let i = 0; i < data.length; i++) {
-                var markerPosition = new kakao.maps.LatLng(data[i].y, data[i].x); // y, x 순서로 변경
-                var marker = new kakao.maps.Marker({
-                  position: markerPosition
-                });
-                marker.setMap(map);
-                var infoWindow = new kakao.maps.InfoWindow({
-                  content: data[i].place_name
-                });
-                marker.addListener("click", function() {
-                  infoWindow.open(map, marker);
-                });
-              }
-            })
-            .catch(error => console.log(error));
-  }
-
-  // 매장 검색 버튼 클릭 이벤트 등록
-  var storeButtons = document.querySelectorAll(".store-btn");
-  storeButtons.forEach(button => {
-    button.addEventListener("click", function() {
-      var brand = button.dataset.brand;
-      searchStores(brand);
-    });
-  });
 </script>
 
 </body>
