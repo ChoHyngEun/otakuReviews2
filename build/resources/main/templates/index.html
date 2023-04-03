@@ -5,6 +5,14 @@
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
   <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," >
+  <style>
+    li, ul{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -48,29 +56,29 @@
   <div>
     <h2>스타벅스</h2>
     <p>스타벅스 너무 맛있는데 어우 너무 비싸 어우</p>
-    <a href="#">스타벅스</a><br>
-    <a href="/map/starbucks">매장검색</a>
+    <a href="https://www.starbucks.co.kr/index.do" target='_blank'>공식홈페이지 방문</a><br>
+    <a href="/map/starbucks">가까운 매장 검색</a>
     <ul id="starbucks"></ul>
   </div>
   <div>
     <h2>메가커피</h2>
     <p>메가커피당 가격도 ㄱㅊ</p>
-    <a href="#">메가커피</a><br>
-    <a href="/map/mega">매장검색</a>
+    <a href="https://www.mega-mgccoffee.com/" target="_blank">공식홈페이지 방문</a><br>
+    <a href="/map/mega">가까운 매장 검색</a>
     <ul id="mega"></ul>
   </div>
   <div>
     <h2>빽다방</h2>
-    <p>어둠의 마법사가 애용함</p>
-    <a href="#">빽다방</a><br>
-    <a href="/map/paik">매장검색</a>
+    <p>어둠의 마법사가 자주 시켜먹음 (연유라떼가 맛있음 캬캬쿄쿄)</p>
+    <a href="https://paikdabang.com/" target="_blank">공식홈페이지 방문</a><br>
+    <a href="/map/paik">가까운 매장 검색</a>
     <ul id="paik"></ul>
   </div>
   <div>
     <h2>이디야</h2>
     <p>이디야 너 어디야</p>
-    <a href="#">이디야</a><br>
-    <a href="/map/ediya">매장검색</a>
+    <a href="https://www.ediya.com/" target="_blank">공식홈페이지 방문</a><br>
+    <a href="/map/ediya">가까운 매장 검색</a>
     <ul id="ediya"></ul>
   </div>
 </section>
