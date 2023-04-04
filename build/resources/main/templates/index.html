@@ -53,28 +53,28 @@
   </div>
 </div>
 <section>
-  <div>
+  <div class="coffee1" onclick="_coffee1()">
     <h2>스타벅스</h2>
     <p>스타벅스 너무 맛있는데 어우 너무 비싸 어우</p>
     <a href="https://www.starbucks.co.kr/index.do" target='_blank'>공식홈페이지 방문</a><br>
     <a href="/map/starbucks">가까운 매장 검색</a>
     <ul id="starbucks"></ul>
   </div>
-  <div>
+  <div class="coffee2" onclick="_coffee2()">
     <h2>메가커피</h2>
     <p>메가커피당 가격도 ㄱㅊ</p>
     <a href="https://www.mega-mgccoffee.com/" target="_blank">공식홈페이지 방문</a><br>
     <a href="/map/mega">가까운 매장 검색</a>
     <ul id="mega"></ul>
   </div>
-  <div>
+  <div class="coffee3" onclick="_coffee3()">
     <h2>빽다방</h2>
     <p>어둠의 마법사가 자주 시켜먹음 (연유라떼가 맛있음 캬캬쿄쿄)</p>
     <a href="https://paikdabang.com/" target="_blank">공식홈페이지 방문</a><br>
     <a href="/map/paik">가까운 매장 검색</a>
     <ul id="paik"></ul>
   </div>
-  <div>
+  <div class="coffee4" onclick="_coffee4()">
     <h2>이디야</h2>
     <p>이디야 너 어디야</p>
     <a href="https://www.ediya.com/" target="_blank">공식홈페이지 방문</a><br>
@@ -82,6 +82,19 @@
     <ul id="ediya"></ul>
   </div>
 </section>
+<div id="scoffee">
+  <input type="button" onclick="_exit1()" value="닫기">
+</div>
+<div id="mcoffee">
+  <input type="button" onclick="_exit2()" value="닫기">
+</div>
+<div id="pcoffee">
+  <input type="button" onclick="_exit3()" value="닫기">
+</div>
+<div id="ecoffee">
+  <input type="button" onclick="_exit4()" value="닫기">
+</div>
+
 <!-- WebSocket 관련 코드 -->
 <script>
   // WebSocket 연결 생성
@@ -122,6 +135,67 @@
     var message = event.data;
     printMessage(message);
   };
+
+  //js
+  //coffee1~4
+  function _coffee1() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '0';
+    element2.style.right = '-1000px';
+    element3.style.right = '-1000px';
+    element4.style.right = '-1000px';
+  }
+  function _coffee2() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '0';
+    element3.style.right = '-1000px';
+    element4.style.right = '-1000px';
+  }
+  function _coffee3() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '-1000px';
+    element3.style.right = '0';
+    element4.style.right = '-1000px';
+  }
+  function _coffee4() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '-1000px';
+    element3.style.right = '-1000px';
+    element4.style.right = '0';
+  }
+  function _exit1(){
+    const element = document.getElementById('scoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit2(){
+    const element = document.getElementById('mcoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit3(){
+    const element = document.getElementById('pcoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit4(){
+    const element = document.getElementById('ecoffee');
+    element.style.right = '-1000px';
+  }
+
+
 </script>
 
 </body>
