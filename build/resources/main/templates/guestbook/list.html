@@ -14,25 +14,27 @@
 
     <table class="table table-striped">
       <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Gno</th>
-          <th scope="col">Title</th>
-          <th scope="col">Regdate</th>
-        </tr>
+      <tr>
+        <th scope="col">Gno</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Writer</th>
+        <th scope="col">Regdate</th>
+      </tr>
       </thead>
 
       <tbody>
-        <tr th:each="dto : ${result.dtoList}">
-          <th scope="row">
-            <a th:href="@{/guestbook/read(gno = ${dto.gno}, page = ${result.page},
+      <tr th:each="dto : ${result.dtoList}">
+        <th scope="row">
+          <a th:href="@{/guestbook/read(gno = ${dto.gno}, page = ${result.page},
                type=${pageRequestDTO.type}, keyword = ${pageRequestDTO.keyword})}">
             [[${dto.gno}]]</a>
-          </th>
-          <td>[[${dto.title}]]</td>
-          <td>[[${dto.writer}]]</td>
-          <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
-        </tr>
+        </th>
+        <td>[[${dto.title}]]</td>
+        <td>[[${dto.content}]]</td>
+        <td>[[${dto.writer}]]</td>
+        <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+      </tr>
       </tbody>
     </table>
 
@@ -56,23 +58,23 @@
     <div class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
 
       </div>
@@ -82,22 +84,22 @@
     <form action="/guestbook/list" method="get" id="searchForm">
       <div class="input-group">
         <input type="hidden" name="page" value="1">
-      <div class="input-group-prepend">
-        <select class="custom-select" name="type">
+        <div class="input-group-prepend">
+          <select class="custom-select" name="type">
             <option th:selected="${pageRequestDTO.type == null}">-----</option>
             <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
             <option value="t" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
             <option value="t" th:selected="${pageRequestDTO.type == 'w'}">작성자</option>
             <option value="tc" th:selected="${pageRequestDTO.type == 'tc'}">제목 + 내용</option>
             <option value="tcw" th:selected="${pageRequestDTO.type == 'tcw'}">제목 + 내용 + 작성자</option>
-        </select>
+          </select>
 
-      </div>
-          <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
-          <div class="input-group-append" id="button-addon4">
-            <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
-            <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
-          </div>
+        </div>
+        <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+        <div class="input-group-append" id="button-addon4">
+          <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
+          <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+        </div>
       </div>
     </form>//검색 타입과 키워드를 입력하고 검색버튼을 추가하기
 
@@ -116,13 +118,13 @@
 
       let searchForm = $("#searchForm");
 
-        $('.btn-search').click(function(e){
-          searchForm.submit();
-        });
+      $('.btn-search').click(function(e){
+        searchForm.submit();
+      });
 
-        $('.btn-clear').click(function(e){
-          searchForm.empty().submit();
-        });
+      $('.btn-clear').click(function(e){
+        searchForm.empty().submit();
+      });
 
     </script>
 
