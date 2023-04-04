@@ -1,19 +1,21 @@
 package com.example.ex3.controller;
 
+import java.util.List;
 import java.util.Random;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.example.ex3.model.Comment;
+import com.example.ex3.model.Post;
+import com.example.ex3.repository.CommentRepository;
+import com.example.ex3.repository.PostRepository;
 import com.example.ex3.service.UserService;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
 
@@ -24,13 +26,16 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PostRepository postRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
     @GetMapping("/signup")
     public String signupForm(Model model) {
         model.addAttribute("user", new User());
         return "signup";
     }
-
 
     @PostMapping("/signup")
     public String signupSubmit(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
@@ -90,7 +95,11 @@ public class UserController {
             return "redirect:/login";
         }
 
+        List<Post> myPosts = postRepository.findByAuthor(user);
+        List<Comment> myComments = commentRepository.findByAuthor(user);
         model.addAttribute("user", user);
+        model.addAttribute("myPosts", myPosts);
+        model.addAttribute("myComments", myComments);
         return "mypage";
     }
 

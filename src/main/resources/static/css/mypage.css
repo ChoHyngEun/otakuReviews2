@@ -1,110 +1,172 @@
-@charset "utf-8";
-/* 전체 스타일 */
+/* 전체 페이지 스타일 */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* 헤더 스타일 */
-header {
-    background-color: #3B3B3B;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+/* 제목 스타일 */
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+h2 {
+  margin-top: 2em;
+  font-size: 1.5em;
 }
 
 /* 네비게이션 스타일 */
 nav {
-    background-color: #E5E5E5;
-    padding: 10px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
 }
 
 nav a {
-    text-decoration: none;
-    color: #000000;
-    font-weight: bold;
-    padding: 10px;
-}
-
-nav a:hover {
-    color: #FFFFFF;
-    background-color: #3B3B3B;
+  color: #fff;
+  margin-left: 1em;
+  text-decoration: none;
 }
 
 /* 섹션 스타일 */
 section {
-    margin: 20px;
-}
-
-section h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  margin: 2em;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th, td {
-    border: 1px solid #E5E5E5;
-    padding: 10px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
 }
 
 th {
-    background-color: #E5E5E5;
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
-td {
-    text-align: center;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
+tr:hover {
+  background-color: #ddd;
+}
+
+form {
+  margin-top: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+input[type="password"] {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.message {
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.message-success {
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+  color: #3c763d;
+  margin-top: 1em;
+  padding: 1em;
+}
 /* 푸터 스타일 */
 footer {
-    background-color: #3B3B3B;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
 }
 
-footer p {
-    margin: 0;
-    font-size: 12px;
+/* 내 정보 테이블의 비밀번호 변경 폼 스타일 */
+#ch_pwd_f label {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  width: 150px;
 }
 
-@media (max-width: 767px) {
-    section {
-        margin: 10px;
-    }
+#ch_pwd_f input[type="password"] {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  width: 60%;
+}
 
-    section h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
+#ch_pwd_f div {
+  margin-top: 1em;
+}
 
-    th, td {
-        padding: 5px;
-    }
+#ch_pwd_f button {
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  transition: background-color 0.3s ease;
+}
 
-    footer {
-        height: 40px;
-    }
+#ch_pwd_f button:hover {
+  background-color: #3e8e41;
+}
 
-    footer p {
-        font-size: 10px;
-    }
-    .message {
-      background-color: red;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-      text-align: center;
-      margin-bottom: 10px;
-    }
+/* 내글 목록 스타일 */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-top: 2em;
+}
+
+li:first-child {
+  margin-top: 0;
+}
+
+a:hover {
+  color: #333;
+}
+
+.post-content {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.post-author {
+  font-style: italic;
+}
+
+.post-date {
+  font-size: 0.8em;
+  color: #999;
 }

@@ -1,3 +1,4 @@
+/*
 package com.example.ex3.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/signup", "/otp-auth", "/mypage", "/logout", "/ch_pwd","/");
+                .excludePathPatterns("/login", "/signup", "/otp-auth", "/mypage", "/logout", "/ch_pwd","/","/map.html");
     }
 
     @Override
@@ -28,4 +29,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
 
-}
+}*/

@@ -7,11 +7,14 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "user")
 @DynamicUpdate
-public class User {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
