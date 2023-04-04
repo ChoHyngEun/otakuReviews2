@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}">Post Title</title>
+    <link th:href="@{/css/show.css}" rel="stylesheet" />
+</head>
+<body>
+<h1 th:text="${post.title}">Post Title</h1>
+<p th:text="${post.content}">Post Content</p>
+<small th:text="${post.createdAt}">Post Created At</small>
+<hr />
+<h2>Comments</h2>
+<ul>
+    <li th:each="comment : ${post.comments}">
+        <p th:text="${comment.content}"></p>
+        <small th:text="${comment.createdAt}"></small>
+        <p>작성자: <span th:text="${comment.author != null ? comment.author.username : 'Unknown'}"></span></p>
+
+        <div th:if="${comment.author != null && comment.author.username == session.user.username}">
+            <a th:href="@{/posts/{postId}/comments/{commentId}/edit(postId=${post.id}, commentId=${comment.id})}">Edit</a>
+        </div>
+        <form th:action="@{/posts/{postId}/comments/del/{commentId}(postId=${post.id}, commentId=${comment.id})}" method="post">
+            <div th:if="${comment.author != null && comment.author.username == session.user.username}">
+                <button type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')">Delete</button>
+            </div>
+        </form>
+        </div>
+    </li>
+</ul>
+<h3>New Comment</h3>
+<form th:action="@{/posts/{id}/comments(id=${post.id})}" th:object="${comment}" method="post">
+    <div>
+        <label for="content">Content:</label>
+        <textarea id="content" th:field="*{content}"></textarea>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+<a th:href="@{/posts}">Back to Posts</a>
+</body>
+</html>
