@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Q&amp;A Page</title>
+</head>
+<body>
+<h1>Q&amp;A Page</h1>
+<!-- display selected Q&amp;A -->
+<div>
+    <h2 th:text="${question.question}"></h2>
+    <p th:text="${question.answer}"></p>
+</div>
+<!-- form to submit a new answer -->
+<form method="post" th:action="@{/qna/{id}(id=${question.id})}">
+    <label for="answer">Answer:</label>
+    <textarea id="answer" name="answer" required></textarea><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
