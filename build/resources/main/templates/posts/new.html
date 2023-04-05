@@ -8,7 +8,7 @@
 <body>
 <h1>New Post</h1>
 <form method="post" th:object="${post}" action="/posts">
-    <input type="hidden" th:field="*{author.username}" th:value="${session.user.id}" name="author.username"/>
+    <input type="hidden" th:field="*{author}" th:value="${session.user}"/>
     <div>
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" th:field="*{title}" required />
