@@ -10,16 +10,15 @@
 <h1>Q&amp;A Page</h1>
 <!-- table of all questions -->
 <h2>All Questions:</h2>
-
 <hr>
 <!-- form to submit a new question -->
 <h2><button id="new_que">new question:</button></h2>
 <div style="display:none" id="form">
-  <form method="post" action="/qna" id="a">
+  <form method="post" th:action="@{/qna}" id="a">
     <label for="author">Author:</label>
-    <input type="text" id="author" name="author" th:field="${newQuestion.author}" required><br><br>
+    <input type="text" id="author" name="author" th:field="${question.author}" required><br><br>
     <label for="question">Question:</label>
-    <textarea id="question" name="question" th:field="${newQuestion.question}" required></textarea><br><br>
+    <textarea id="question" name="question" th:field="${question.question}" required></textarea><br><br>
     <button id="submit_btn" type="submit">Submit</button>
   </form>
 </div>
@@ -38,16 +37,20 @@
     <td th:text="${question.date}"></td>
     <td th:text="${question.question}"></a></td>
     <td th:text="${question.author}"></td>
-    <td><a th:href="@{/qna/{id}(id=${question.id})}">답글</a></td>
+    <td th:text="${question.answer}"></td>
+    <td>
+      <a th:if="${session.user != null && session.user.username == 'admin'}"
+         th:href="@{/qna/{id}(id=${question.id})}">답글</a>
+    </td>
   </tr>
   </tbody>
 </table>
 <!-- display selected Q&amp;A -->
-<div th:if="${selectedQuestion}">
+<div th:if="${question}">
   <h2>Question:</h2>
-  <p th:text="${selectedQuestion.question}"></p>
+  <p th:text="${question.question}"></p>
   <h2>Answer:</h2>
-  <p th:text="${selectedQuestion.answer}"></p>
+  <p th:text="${question.answer}"></p>
 </div>
 
 

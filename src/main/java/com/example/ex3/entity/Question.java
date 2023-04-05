@@ -64,4 +64,7 @@ public class Question {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public void setAnsweredDate(Date date) {
+    }
 }

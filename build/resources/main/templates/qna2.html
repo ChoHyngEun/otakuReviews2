@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <title>게시판</title>
+  <meta charset="UTF-8">
+  <title>Q&amp;A Page</title>
 </head>
 <body>
-<h1>게시판</h1>
+<h1>Q&amp;A Page</h1>
+<!-- display selected Q&amp;A -->
 <div>
-  <!-- 게시글 영역 -->
-  <h2>게시글 제목</h2>
-  <p>게시글 내용</p>
-  <!-- 관리자용 답글 영역 -->
-  <h3>관리자용 답글 영역</h3>
-  <form method="post">
-    <label for="admin-reply">답글</label>
-    <textarea name="admin-reply" id="admin-reply" rows="5" cols="50"></textarea><br>
-    <input type="submit" value="답글 등록">
-  </form>
+  <h2 th:text="${question.question}"></h2>
+  <p th:text="${question.answer}"></p>
 </div>
-<footer>
-  <p>저작권 © 2023. 게시판</p>
-</footer>
+<!-- form to submit a new answer -->
+<form method="post" th:action="@{/qna/{id}(id=${question.id})}">
+  <label for="answer">Answer:</label>
+  <textarea id="answer" name="answer" required></textarea><br><br>
+  <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>
