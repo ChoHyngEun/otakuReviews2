@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cb026271-93c8-43e4-8499-05a896015e28" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ex3.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ex3.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/DTO/GuestbookDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/DTO/GuestbookDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/Guestbook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/Guestbook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/service/GuestbookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/service/GuestbookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/read.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/read.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "settings.sync",
     "spring.configuration.checksum": "6b7c4c7b165d2ae0d906af6091a73d05",
     "vue.rearranger.settings.migration": "true"
   }
@@ -204,7 +200,8 @@
       <workItem from="1680664219618" duration="2818000" />
       <workItem from="1680693442082" duration="1964000" />
       <workItem from="1680696179368" duration="68000" />
-      <workItem from="1680696548678" duration="3524000" />
+      <workItem from="1680696548678" duration="4215000" />
+      <workItem from="1680703856049" duration="3477000" />
     </task>
     <servers />
   </component>
