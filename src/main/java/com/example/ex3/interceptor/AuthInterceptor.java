@@ -32,10 +32,13 @@ public class AuthInterceptor implements HandlerInterceptor {
         } else if (user != null && requestURI.startsWith("/guestbook")) {
             // 사용자 인증 정보가 있는 경우 "/guestbook" 요청에 대해서는 리다이렉트를 시키지 않음
             return true;
+        } else if (user != null && requestURI.startsWith("/posts")) {
+            // 사용자 인증 정보가 있는 경우 "/guestbook" 요청에 대해서는 리다이렉트를 시키지 않음
+            return true;
         }
 
         // 예외 페이지 설정
-        if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp") || requestURI.startsWith("/map") || requestURI.startsWith("/qna") || requestURI.startsWith("/st") || requestURI.startsWith("/mg") || requestURI.startsWith("/ed") || requestURI.startsWith("/pk") || requestURI.startsWith("/etc") || requestURI.startsWith("/posts")){
+        if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp") || requestURI.startsWith("/map") || requestURI.startsWith("/qna") || requestURI.startsWith("/st") || requestURI.startsWith("/mg") || requestURI.startsWith("/ed") || requestURI.startsWith("/pk") || requestURI.startsWith("/etc")){
             return true;
         }
 
