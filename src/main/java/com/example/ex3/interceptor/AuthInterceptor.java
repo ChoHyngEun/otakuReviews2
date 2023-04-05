@@ -1,4 +1,4 @@
-/*
+
 package com.example.ex3.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,4 +49,4 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
     }
 
-}*/
+}
