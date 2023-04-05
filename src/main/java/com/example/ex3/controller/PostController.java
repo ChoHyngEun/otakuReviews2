@@ -23,6 +23,37 @@ public class PostController {
         return "posts/st";
     }
 
+    @GetMapping("/ed")
+    public String edList(Model model) {
+        List<Post> posts = postService.getAllPosts();
+        model.addAttribute("post", new Post()); // post 객체 추가
+        model.addAttribute("posts", posts);
+        return "posts/ed";
+    }
+
+    @GetMapping("/mg")
+    public String mgList(Model model) {
+        List<Post> posts = postService.getAllPosts();
+        model.addAttribute("post", new Post()); // post 객체 추가
+        model.addAttribute("posts", posts);
+        return "posts/mg";
+    }
+
+    @GetMapping("/pk")
+    public String pkList(Model model) {
+        List<Post> posts = postService.getAllPosts();
+        model.addAttribute("post", new Post()); // post 객체 추가
+        model.addAttribute("posts", posts);
+        return "posts/pk";
+    }
+
+    @GetMapping("/etc")
+    public String etcList(Model model) {
+        List<Post> posts = postService.getAllPosts();
+        model.addAttribute("post", new Post()); // post 객체 추가
+        model.addAttribute("posts", posts);
+        return "posts/etc";
+    }
     @Autowired
     private PostService postService;
 

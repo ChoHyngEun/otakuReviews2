@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>빽다방</title>
+</head>
+<body>
+<h1>빽다방 포스트(Post) 목록</h1>
+<ul>
+  <li th:each="post : ${posts}" th:if="${post.title.toLowerCase().contains('빽다방') || post.title.toLowerCase().contains('paik')}">
+    <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+    <p th:text="${post.content}"></p>
+    <p>작성자: <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
+    <small th:text="${post.createdAt}"></small>
+  </li>
+</ul>
+<a th:href="@{/posts/new}">New post</a>
+</body>
+</html>

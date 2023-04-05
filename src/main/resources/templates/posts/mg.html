@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>스타벅스</title>
+    <title>메가커피</title>
 </head>
 <body>
-<h1>스타벅스 포스트(Post) 목록</h1>
+<h1>메가커피 포스트(Post) 목록</h1>
 <ul>
-    <li th:each="post : ${posts}" th:if="${post.title.toLowerCase().contains('스타벅스') || post.title.toLowerCase().contains('starbucks')}">
+    <li th:each="post : ${posts}" th:if="${post.title.toLowerCase().contains('메가') || post.title.toLowerCase().contains('mega')}">
         <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
         <p th:text="${post.content}"></p>
         <p>작성자: <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
