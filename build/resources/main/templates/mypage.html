@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet" />
+    <script src="/js/mypage.js"></script>
+</head>
+<body>
+<header>
+    <h1>마이페이지</h1>
+</header>
+
+<nav>
+    <a href="/">홈</a>
+    <a href="/logout">로그아웃</a>
+</nav>
+
+<section>
+    <h2>내 정보</h2>
+    <table>
+        <tr>
+            <th>사용자 이름</th>
+            <td th:text="${session.user.username}"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td th:text="${session.user.name}"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td th:text="${session.user.email}"></td>
+        </tr>
+        <tr>
+            <th>비밀번호 변경</th>
+            <td>
+                <form id="ch_pwd_f" action="/ch_pwd" method="post">
+                    <label for="cur_pwd">현재 비밀번호:</label>
+                    <input type="password" id="cur_pwd" name="cur_pwd" required th:attr="data-password=${session.user.password}">
+                    <div id="new_pwd-field" style="display:none">
+                        <label for="new_pwd">새 비밀번호:</label>
+                        <input type="password" id="new_pwd" name="new_pwd" required>
+                        <br>
+                        <label for="con_pwd">새 비밀번호 확인:</label>
+                        <input type="password" id="con_pwd" name="con_pwd" required>
+                        <br>
+                    </div>
+                    <div id="error_message" class="message" style="display:none"></div>
+                    <div th:if="${error_Message}" class="message" th:text="${error_Message}" style="display:none"></div>
+                    <div th:if="${error_Message2}" class="message" th:text="${error_Message2}" style="display:none"></div>
+                    <div th:if="${success_Message}" class="message" th:text="${success_Message}" ></div>
+                    <button id="change-password-btn" type="button">비밀번호 변경</button>
+                    <button id="submit-password-btn" type="submit" style="display:none">변경</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <h2>내글 목록</h2>
+    <ul>
+        <li th:each="post : ${myPosts}">
+            <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+            <p th:text="${post.content}"></p>
+            <div th:if="${post.author != null && post.author.username == session.user.username}">
+                <a th:href="@{/posts/{id}/edit(id=${post.id})}">수정</a>
+            </div>
+            <p>작성자: <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
+            <small th:text="${post.createdAt}"></small>
+        </li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2023. All rights reserved.</p>
+</footer>
+</body>
+</html>
