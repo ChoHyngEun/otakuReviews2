@@ -2,20 +2,27 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>OTP 인증</title>
   <link th:href="@{/css/login.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="login-box">
-  <h2>OTP인증</h2>
+  <div th:if="${otpEnabled}" class="box2">
+    <h2>OTP 코드 생성</h2>
+    <p>아래의 QR 코드를 스캔하여 OTP 앱에 등록하세요.</p>
+    <img th:src="${qrCodeUrl}" />
+  </div>
+  <div th:unless="${otpEnabled}" class="box2">
+    <p>OTP 인증이 이미 활성화되어 있습니다.</p>
+  </div>
+  <h2>OTP 인증</h2>
   <form method="post" action="/otp-auth">
     <div class="user-box">
-      <input type="text" name="name" required="">
-      <label>이름</label>
-    </div>
-    <div class="user-box">
-      <input type="password" name="otpSecret" required="">
+      <input type="text" name="otpCode" required="">
       <label>OTP번호</label>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+      <p id="error-message" th:text="${errorMessage}"></p>
     </div>
     <button type="submit">
       <span></span>
@@ -24,6 +31,7 @@
       <span></span>
       인증
     </button>
+  </form>
 </div>
 </body>
 </html>

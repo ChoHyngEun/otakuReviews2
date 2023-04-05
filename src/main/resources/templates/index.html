@@ -4,71 +4,205 @@
   <meta charset="UTF-8">
   <title>Main Page</title>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," >
+  <style>
+    li, ul{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>메인 페이지</h1>
-  </header>
-  
-  <nav>
-    <a href="#">스타벅스</a>
-    <a href="#">메가커피</a>
-    <a href="#">빽다방</a>
-    <a href="#">이디아</a>
-    <a href="#">기타</a>
-  </nav>
-
-  <!-- 채팅 UI -->
-  <div id="chat-container">
-    <div id="chat-header">
-      <h2>채팅</h2>
-    </div>
-    <div id="chat-messages">
-      <!-- 메시지 출력 -->
-    </div>
-    <form id="chat-form">
-      <input type="text" placeholder="메시지를 입력하세요">
-      <button type="submit">전송</button>
-    </form>
+<header>
+  <h1>메인 페이지</h1>
+</header>
+<nav>
+  <a href="/st">스타벅스</a>
+  <a href="#">메가커피</a>
+  <a href="#">빽다방</a>
+  <a href="#">이디아</a>
+  <a href="#">기타</a>
+  <a href="/guestbook/list">게시판</a>
+  <a href="/posts">리뷰</a>
+  <a href="/qna">QnA</a>
+</nav>
+<!-- 채팅 UI -->
+<div id="chat-container">
+  <div id="chat-header">
+    <h2>채팅</h2>
   </div>
-
-  <!-- 로그인/회원가입 UI -->
-  <div class="login-container" th:if="${session.user == null}">
-    <div class="login-buttons">
-      <a id="login-btn" href="/login">로그인</a>
-      <a id="signup-btn" href="/signup">회원가입</a>
-    </div>
+  <div id="chat-messages">
+    <!-- 메시지 출력 -->
   </div>
-  <div class="login-container" th:if="${session.user != null}">
-    <div class="login-buttons">
-      <a id="logout-btn" href="/logout">로그아웃</a>
-      <a id="mypage-btn" href="/mypage">내 정보</a>
-    </div>
+  <form id="chat-form">
+    <input type="text" placeholder="메시지를 입력하세요">
+    <button type="submit">전송</button>
+  </form>
+</div>
+<!-- 로그인/회원가입 UI -->
+<div class="login-container" th:if="${session.user == null}">
+  <div class="login-buttons">
+    <a id="login-btn" href="/login">로그인</a>
+    <a id="signup-btn" href="/signup">회원가입</a>
   </div>
+</div>
+<div class="login-container" th:if="${session.user != null}">
+  <div class="login-buttons">
+    <a id="logout-btn" href="/logout">로그아웃</a>
+    <a id="mypage-btn" href="/mypage">내 정보</a>
+  </div>
+</div>
+<section>
+  <div class="coffee1" onclick="_coffee1()">
+    <h2>스타벅스</h2>
+    <i>오늘 스벅 한잔?</i>
+    <br><br>
+    <a href="https://www.starbucks.co.kr/index.do" target='_blank'>공식홈페이지 방문</a><br><br>
+    <a href="/map/starbucks">가까운 매장 검색</a>
+    <ul id="starbucks"></ul>
+  </div>
+  <div class="coffee2" onclick="_coffee2()">
+    <h2>메가커피</h2>
+    <i>사이즈가 정말 Mega !</i>
+    <br><br>
+    <a href="https://www.mega-mgccoffee.com/" target="_blank">공식홈페이지 방문</a><br><br>
+    <a href="/map/mega">가까운 매장 검색</a>
+    <ul id="mega"></ul>
+  </div>
+  <div class="coffee3" onclick="_coffee3()">
+    <h2>빽다방</h2>
+    <i>커피계의 다크호스!</i>
+    <br><br>
+    <a href="https://paikdabang.com/" target="_blank">공식홈페이지 방문</a><br><br>
+    <a href="/map/paik">가까운 매장 검색</a>
+    <ul id="paik"></ul>
+  </div>
+  <div class="coffee4" onclick="_coffee4()">
+    <h2>이디야</h2>
+    <i>이디야, 너 어디야?</i>
+    <br><br>
+    <a href="https://www.ediya.com/" target="_blank">공식홈페이지 방문</a><br><br>
+    <a href="/map/ediya">가까운 매장 검색</a>
+    <ul id="ediya"></ul>
+  </div>
+</section>
+<div id="scoffee">
+  <input type="button" onclick="_exit1()" value="닫기">
+</div>
+<div id="mcoffee">
+  <input type="button" onclick="_exit2()" value="닫기">
+</div>
+<div id="pcoffee">
+  <input type="button" onclick="_exit3()" value="닫기">
+</div>
+<div id="ecoffee">
+  <input type="button" onclick="_exit4()" value="닫기">
+</div>
 
-  <section>
-    <div>
-      <h2>스타벅스</h2>
-      <p>서비스1의 설명입니다.</p>
-      <a href="#">스타벅스</a>
-    </div>
-    <div>
-      <h2>메가커피</h2>
-      <p>서비스2의 설명입니다.</p>
-    </div>
-    <div>
-      <h2>빽다방</h2>
-      <p>서비스3의 설명입니다.</p>
-    </div>
-    <div>
-      <h2>이디아</h2>
-      <p>서비스3의 설명입니다.</p>
-    </div>
-  </section>
+<!-- WebSocket 관련 코드 -->
+<script>
+  // WebSocket 연결 생성
+  var webSocket = new WebSocket("ws://" + window.location.host + "/chat");
+  // 채팅 메시지 출력 함수
+  function printMessage(message) {
+    var messageElement = document.createElement("div");
+    messageElement.innerText = message;
+    document.getElementById("chat-messages").appendChild(messageElement);
+  }
 
-  <footer>
-    <p>© 2023. All rights reserved.</p>
-  </footer>
+  // WebSocket 연결 성공 시 실행될 함수
+  webSocket.onopen = function(event) {
+    console.log("WebSocket 연결 성공");
+  };
+
+  // WebSocket 연결 종료 시 실행될 함수
+  webSocket.onclose = function(event) {
+    console.log("WebSocket 연결 종료");
+  };
+
+  // 채팅 메시지 전송
+  function sendMessage() {
+    var inputElement = document.querySelector("#chat-form input");
+    var message = inputElement.value;
+    webSocket.send(message);
+    inputElement.value = "";
+  }
+
+  var formElement = document.getElementById("chat-form");
+  formElement.addEventListener("submit", function(event) {
+    event.preventDefault();
+    sendMessage();
+  });
+
+  // 채팅 메시지 출력
+  webSocket.onmessage = function(event) {
+    var message = event.data;
+    printMessage(message);
+  };
+
+  /* js */
+  //coffee1~4
+  function _coffee1() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '0';
+    element2.style.right = '-1000px';
+    element3.style.right = '-1000px';
+    element4.style.right = '-1000px';
+  }
+  function _coffee2() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '0';
+    element3.style.right = '-1000px';
+    element4.style.right = '-1000px';
+  }
+  function _coffee3() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '-1000px';
+    element3.style.right = '0';
+    element4.style.right = '-1000px';
+  }
+  function _coffee4() {
+    var element1 = document.getElementById('scoffee');
+    var element2 = document.getElementById('mcoffee');
+    var element3 = document.getElementById('pcoffee');
+    var element4 = document.getElementById('ecoffee');
+    element1.style.right = '-1000px';
+    element2.style.right = '-1000px';
+    element3.style.right = '-1000px';
+    element4.style.right = '0';
+  }
+  function _exit1(){
+    const element = document.getElementById('scoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit2(){
+    const element = document.getElementById('mcoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit3(){
+    const element = document.getElementById('pcoffee');
+    element.style.right = '-1000px';
+  }
+  function _exit4(){
+    const element = document.getElementById('ecoffee');
+    element.style.right = '-1000px';
+  }
+
+
+</script>
 
 </body>
 </html>

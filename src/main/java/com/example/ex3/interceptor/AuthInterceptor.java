@@ -23,7 +23,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") ) {
+        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") && !requestURI.startsWith("/map") && !requestURI.startsWith("/qna") && !requestURI.startsWith("/st") && !requestURI.startsWith("/posts")) {
             response.sendRedirect("/login");
             return false;
         } else if (user != null && requestURI.equals("/")) {
@@ -32,7 +32,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
 
         // 예외 페이지 설정
-        if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp")) {
+        if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp") || requestURI.startsWith("/map") || requestURI.startsWith("/qna") || requestURI.startsWith("/st") || requestURI.startsWith("/posts")){
             return true;
         }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <script src="/js/mypage.js"></script>
 </head>
 <body>
 <div class="login-box">
@@ -24,8 +25,8 @@
             <span></span>
             로그인
         </button>
-        <div th:if="${error}" class="alert alert-danger" role="alert">
-            <p th:text="${error}"></p>
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <p id="error-message" th:text="${errorMessage}"></p>
         </div>
     </form>
     <br>

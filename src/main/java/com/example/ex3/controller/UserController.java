@@ -1,24 +1,21 @@
 package com.example.ex3.controller;
 
-import java.security.GeneralSecurityException;
+import java.util.List;
 import java.util.Random;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.example.ex3.model.Comment;
+import com.example.ex3.model.Post;
+import com.example.ex3.repository.CommentRepository;
+import com.example.ex3.repository.PostRepository;
 import com.example.ex3.service.UserService;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
 
@@ -29,13 +26,16 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PostRepository postRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
     @GetMapping("/signup")
     public String signupForm(Model model) {
         model.addAttribute("user", new User());
         return "signup";
     }
-
 
     @PostMapping("/signup")
     public String signupSubmit(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
@@ -95,10 +95,13 @@ public class UserController {
             return "redirect:/login";
         }
 
+        List<Post> myPosts = postRepository.findByAuthor(user);
+        List<Comment> myComments = commentRepository.findByAuthor(user);
         model.addAttribute("user", user);
+        model.addAttribute("myPosts", myPosts);
+        model.addAttribute("myComments", myComments);
         return "mypage";
     }
-
 
     @GetMapping("/otp-auth")
     public String otpForm(HttpSession session, Model model) {
@@ -156,47 +159,30 @@ public class UserController {
         return Integer.toString(code);
     }
 
-
-    // 비밀번호 변경 요청 처리
     @GetMapping("/ch_pwd")
-    public String showChangePasswordPage(Model model, HttpSession session) {
-        String userEmail = ((User) session.getAttribute("user")).getEmail();
-        model.addAttribute("userEmail", userEmail);
+    public String changePasswordFrom(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("user", user);
         return "mypage";
     }
-
     @PostMapping("/ch_pwd")
-    public String changePassword(HttpServletRequest request, HttpSession session, Model model) {
-        String currentPassword = request.getParameter("cur_pwd");
-        String newPassword = request.getParameter("new_pwd");
-        String confirmPassword = request.getParameter("con_pwd");
-        if (currentPassword == null || currentPassword.isEmpty()) {
-            model.addAttribute("errorMessage", "현재 비밀번호를 입력해주세요.");
-            return "mypage";
+    public String changePassword(@RequestParam String new_pwd, @RequestParam String con_pwd, HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            return "redirect:/login";
         }
-        
-        //HttpSession 객체를 선언하고, session.getAttribute("user.email")를 통해 현재 사용자의 이메일 값을 가져옴
-        User currentUser = (User) session.getAttribute("user");
-       // UserRepository에서 해당 사용자를 조회하고, 조회된 User 객체의 getPassword() 메소드를 사용하여 데이터베이스에 저장된 현재 사용자 비밀번호를 가져옵
-        User user = userRepository.findByEmail((String) session.getAttribute("user.email"));
-        //현재 비밀번호(current password)를 클라이언트에서 전달받아, 해당 비밀번호와 데이터베이스에 저장된 현재 사용자의 비밀번호를 비교
-        if (!user.getPassword().equals(currentPassword)) {
-            model.addAttribute("errorMessage", "현재 비밀번호가 일치하지 않습니다.");
-            return "mypage";
+        if (!new_pwd.equals(con_pwd)) {
+            model.addAttribute("error_Message2", "새 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            return "redirect:/mypage";
         }
-
-        if (!newPassword.equals(confirmPassword)) {
-            model.addAttribute("errorMessage", "새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-            return "mypage";
-        }
-
-        boolean result = userService.changePassword(currentUser.getEmail(), currentPassword, newPassword);
-
-        if (!result) {
-            model.addAttribute("errorMessage", "비밀번호 변경에 실패했습니다.");
-            return "mypage";
-        }
-
+        user.changePassword(new_pwd); // 새 비밀번호 값으로 변경
+        userRepository.save(user);
+        model.addAttribute("success_Message", "비밀번호가 변경되었습니다.");
         return "redirect:/mypage";
     }
+
 }

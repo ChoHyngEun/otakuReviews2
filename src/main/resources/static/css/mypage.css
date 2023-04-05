@@ -99,7 +99,7 @@ footer p {
     footer p {
         font-size: 10px;
     }
-    .error-message {
+    .message {
       background-color: red;
       color: white;
       padding: 10px;

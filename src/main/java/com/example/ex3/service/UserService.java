@@ -5,14 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import com.warrenstrange.googleauth.GoogleAuthenticatorQRGenerator;
-
 import com.example.ex3.model.User;
 import com.example.ex3.repository.UserRepository;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Random;
 
 @Service
 public class UserService {
@@ -84,22 +81,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean changePassword(String email, String currentPassword, String newPassword) {
-        User user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            // 사용자를 찾을 수 없음
-            return false;
-        }
 
-        if (!user.checkPassword(currentPassword)) {
-            // 현재 비밀번호가 일치하지 않음
-            return false;
-        }
 
-        user.changePassword(newPassword);
-        userRepository.save(user);
-
-        return true;
-    }
 }
