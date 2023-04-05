@@ -23,13 +23,20 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") && !requestURI.startsWith("/map") && !requestURI.startsWith("/qna") && !requestURI.startsWith("/st") && !requestURI.startsWith("/posts")) {
+        if (user == null && !requestURI.equals("/login") && !requestURI.equals("/") && !requestURI.equals("/signup")  && !requestURI.equals("/otp") && !requestURI.startsWith("/map") && !requestURI.startsWith("/qna") && !requestURI.startsWith("/st") && !requestURI.startsWith("/posts")){
             response.sendRedirect("/login");
             return false;
-        } else if (user != null && requestURI.equals("/")) {
+        } else if (user != null && requestURI.equals("/"))  {
             // 사용자 인증 정보가 있는 경우 "/" 요청에 대해서는 리다이렉트를 시키지 않음
             return true;
+        } /*else if (user != null && requestURI.startsWith("/posts")) {
+            // 사용자 인증 정보가 있는 경우 "/post" 요청에 대해서는 리다이렉트를 시키지 않음
+            return true;
         }
+//        } else if (user == null && requestURI.startsWith("/posts")) {
+//            response.sendRedirect("/login");
+//            return false;
+//        }*/
 
         // 예외 페이지 설정
         if ( requestURI.equals("/") || requestURI.equals("/signup") || requestURI.equals("/otp") || requestURI.startsWith("/map") || requestURI.startsWith("/qna") || requestURI.startsWith("/st") || requestURI.startsWith("/posts")){

@@ -54,8 +54,19 @@
                 </form>
             </td>
         </tr>
-
     </table>
+    <h2>내글 목록</h2>
+    <ul>
+        <li th:each="post : ${myPosts}">
+            <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+            <p th:text="${post.content}"></p>
+            <div th:if="${post.author != null && post.author.username == session.user.username}">
+                <a th:href="@{/posts/{id}/edit(id=${post.id})}">수정</a>
+            </div>
+            <p>작성자: <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
+            <small th:text="${post.createdAt}"></small>
+        </li>
+    </ul>
 </section>
 
 <footer>
