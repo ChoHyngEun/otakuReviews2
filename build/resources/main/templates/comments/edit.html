@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Comment</title>
+  <link th:href="@{/css/edit.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>Edit Comment</h1>
+<form th:action="@{/posts/{postId}/comments/{commentId}(postId=${post.id}, commentId=${comment.id})}" th:object="${comment}" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <div>
+    <label for="content">Content:</label>
+    <textarea id="content" th:field="*{content}"></textarea>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+    <a th:href="@{/posts/{postId}(postId=${post.id})}">Cancel</a>
+  </div>
+</form>
+</body>
+</html>

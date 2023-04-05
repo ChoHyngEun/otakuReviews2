@@ -1,0 +1,169 @@
+@charset "utf-8";
+html {
+  height: 100%;
+}
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+body {
+  min-height: 100vh;
+  background: #1A1E2D;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin:0;
+}
+
+
+.sign-box {
+  margin-top: 30px;
+}
+
+.sign-box h1 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.sign-box .user_box {
+  position: relative;
+  width: 250px;
+  margin: 0 auto;
+}
+.sign-box > .box2 {
+  font-size: 20px;
+}
+#error-message {
+  font-size: 16px;
+}
+.sign-box .user_box input {
+  width: 200px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.sign-box .user_box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.user_box input:focus ~ label,
+.user_box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.user_box:last-child > input {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  border: 1px solid #03e9f4;
+  letter-spacing: 4px;
+  cursor: pointer;
+  background-color: #1A1E2D;
+}
+.user_box:last-child input:hover {
+  background: #03e9f4;
+  color: #fff;
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 0 5px #03e9f4,*/
+  /*            0 0 25px #03e9f4,*/
+  /*            0 0 50px #03e9f4,*/
+  /*            0 0 100px #03e9f4;*/
+}
+.sign_card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position:relative;
+  margin: auto;
+  border-radius: 6px;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+}
+
+.sign_card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+.sign_card:hover:before, .sign_card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+.sign_card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+
+.sign_card::after {
+  content: "";
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0.8);
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
