@@ -3,6 +3,7 @@ package com.example.ex3.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -31,5 +32,13 @@ public class Guestbook extends BaseEntity{
 
     public void changeContent(String content){
         this.content = content;
+    }
+
+    public void setRegDate(LocalDateTime now) {
+        this.regDate = now;
+    }
+
+    public void setModDate(LocalDateTime now) {
+        this.modDate = now;
     }
 }

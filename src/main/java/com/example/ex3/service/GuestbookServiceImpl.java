@@ -16,6 +16,7 @@ import com.example.ex3.DTO.PageRequestDTO;
 import com.example.ex3.DTO.PageResultDTO;
 import com.example.ex3.entity.Guestbook;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -28,13 +29,16 @@ public class GuestbookServiceImpl implements GuestbookService{
 
     @Override
     public Long register(GuestbookDTO dto){
-
         log.info("DTO-------------");
         log.info(dto);
 
         Guestbook entity = dtoToEntity(dto);
 
         log.info(entity);
+
+        // Set regDate and modDate using getters from BaseEntity
+        entity.setRegDate(LocalDateTime.now());
+        entity.setModDate(LocalDateTime.now());
 
         repository.save(entity);
 
@@ -75,6 +79,9 @@ public class GuestbookServiceImpl implements GuestbookService{
 
             entity.changeTitle(dto.getTitle());
             entity.changeContent(dto.getContent());
+
+            //수정시간 업데이트
+            entity.setModDate(LocalDateTime.now());
 
             repository.save(entity);
         }
