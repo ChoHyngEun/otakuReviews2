@@ -103,7 +103,6 @@ public class UserController {
         return "mypage";
     }
 
-
     @GetMapping("/otp-auth")
     public String otpForm(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
