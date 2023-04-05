@@ -1,172 +1,169 @@
-/* 전체 페이지 스타일 */
+@charset "utf-8";
+html {
+  height: 100%;
+}
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-/* 제목 스타일 */
-h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-h2 {
-  margin-top: 2em;
-  font-size: 1.5em;
-}
-
-/* 네비게이션 스타일 */
-nav {
-  background-color: #333;
-  color: #fff;
+  min-height: 100vh;
+  background: #1A1E2D;
   display: flex;
-  justify-content: flex-end;
-  padding: 1em;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin:0;
 }
 
-nav a {
+
+.sign-box {
+  margin-top: 30px;
+}
+
+.sign-box h1 {
+  margin: 0 0 30px;
+  padding: 0;
   color: #fff;
-  margin-left: 1em;
-  text-decoration: none;
-}
-
-/* 섹션 스타일 */
-section {
-  margin: 2em;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  vertical-align: middle;
-}
-
-th {
-  background-color: #f2f2f2;
-  font-weight: bold;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-tr:hover {
-  background-color: #ddd;
-}
-
-form {
-  margin-top: 1em;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-input[type="password"] {
-  border: 1px solid #ddd;
-  padding: 0.5em;
-  width: 100%;
-}
-
-.message {
-  background-color: #f2dede;
-  border: 1px solid #ebccd1;
-  color: #a94442;
-  margin-top: 1em;
-  padding: 1em;
-}
-
-.message-success {
-  background-color: #dff0d8;
-  border: 1px solid #d6e9c6;
-  color: #3c763d;
-  margin-top: 1em;
-  padding: 1em;
-}
-/* 푸터 스타일 */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 1em;
   text-align: center;
 }
 
-/* 내 정보 테이블의 비밀번호 변경 폼 스타일 */
-#ch_pwd_f label {
-  display: inline-block;
-  margin-bottom: 0.5em;
-  width: 150px;
+.sign-box .user_box {
+  position: relative;
+  width: 250px;
+  margin: 0 auto;
 }
-
-#ch_pwd_f input[type="password"] {
-  display: inline-block;
-  margin-bottom: 0.5em;
-  width: 60%;
+.sign-box > .box2 {
+  font-size: 20px;
 }
-
-#ch_pwd_f div {
-  margin-top: 1em;
+#error-message {
+  font-size: 16px;
 }
-
-#ch_pwd_f button {
-  background-color: #4CAF50;
-  border: none;
+.sign-box .user_box input {
+  width: 200px;
+  padding: 10px 0;
+  font-size: 16px;
   color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.sign-box .user_box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.user_box input:focus ~ label,
+.user_box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.user_box:last-child > input {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  border: 1px solid #03e9f4;
+  letter-spacing: 4px;
   cursor: pointer;
-  font-size: 1em;
-  margin-top: 1em;
-  padding: 0.5em;
-  transition: background-color 0.3s ease;
+  background-color: #1A1E2D;
 }
-
-#ch_pwd_f button:hover {
-  background-color: #3e8e41;
+.user_box:last-child input:hover {
+  background: #03e9f4;
+  color: #fff;
+  /*border-radius: 5px;*/
+  /*box-shadow: 0 0 5px #03e9f4,*/
+  /*            0 0 25px #03e9f4,*/
+  /*            0 0 50px #03e9f4,*/
+  /*            0 0 100px #03e9f4;*/
 }
-
-/* 내글 목록 스타일 */
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  margin-top: 2em;
-}
-
-li:first-child {
-  margin-top: 0;
-}
-
-a:hover {
-  color: #333;
-}
-
-.post-content {
-  font-size: 1.2em;
-  margin-top: 0.5em;
-}
-
-.post-info {
+.sign_card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position:relative;
+  margin: auto;
+  border-radius: 6px;
+  justify-content: center;
+  text-align: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 0.5em;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
 }
 
-.post-author {
-  font-style: italic;
+.sign_card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+.sign_card:hover:before, .sign_card:hover:after {
+  animation: none;
+  opacity: 0;
 }
 
-.post-date {
-  font-size: 0.8em;
-  color: #999;
+
+.sign_card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+
+.sign_card::after {
+  content: "";
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0.8);
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+          var(--rotate)
+          , #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
 }

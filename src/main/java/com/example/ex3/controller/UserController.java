@@ -80,11 +80,14 @@ public class UserController {
     }
 
     @GetMapping("/index")
-    public String Index(HttpSession session) {
+    public String Index(HttpSession session, Model model) {
         if (session.getAttribute("user") == null) {
             return "redirect:/login"; // 로그인 페이지로 리디렉션
         }
         // 로그인한 사용자만 접근할 수 있는 자원에 대한 처리
+        String username = (String)session.getAttribute("username"); // 세션에서 사용자 이름 가져오기
+        User user = userRepository.findByUsername(username); // 사용자 이름으로 사용자 정보 조회
+        model.addAttribute("user", user); // 모델에 사용자 객체 추가
         return "index";
     }
 
