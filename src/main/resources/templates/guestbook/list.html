@@ -36,17 +36,15 @@
       </div>
     </form>
 
-
-
     <table class="table table-striped">
 
       <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Gno</th>
-        <th scope="col">Title</th>
-        <th scope="col">Regdate</th>
-        <th scope="col">Moddate</th>
+        <th scope="col">글번호</th>
+        <th scope="col">제목</th>
+        <th scope="col">작성자</th>
+        <th scope="col">등록일</th>
+        <th scope="col">수정일</th>
       </tr>
       </thead>
       <tbody>
@@ -58,8 +56,8 @@
         </th>
         <td>[[${dto.title}]]</td>
         <td>[[${dto.writer}]]</td>
-        <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
-        <td>[[${#temporals.format(dto.modDate, 'yyyy/MM/dd')}]]</td>
+        <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
+        <td>[[${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}]]</td>
 <!--        <td>[[${dto.regDate}]]</td>-->
 <!--        <td>[[${dto.modDate}]]</td>-->
       </tr>
@@ -84,6 +82,56 @@
       </li>
 
     </ul>
+
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">성공!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script th:inline="javascript">
+
+      let msg = [[${msg}]];
+
+      console.log(msg);
+
+      if(msg){
+        $(".modal").modal();
+      }
+
+      let searchForm = $("#searchForm");
+
+      $('.btn-search').click(function(e){
+        searchForm.submit();
+      });
+
+      $('.btn-clear').click(function(e){
+        searchForm.empty().submit();
+      });
+
+    </script>
 
   </th:block>
 </th:block>
