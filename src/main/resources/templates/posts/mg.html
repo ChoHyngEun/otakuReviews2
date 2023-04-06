@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>메가커피</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: #ffc107;
+        }
+        ul, ol, li{
+            list-style: none;
+        }
+        #list{
+            background-color: #c1d6cc;
+            width: 30vw;
+            align-content: center;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<h1>메가커피 포스트(Post) 목록</h1>
-<ul>
+<h1>메가커피 전체 리뷰입니다!</h1>
+<i>리뷰 제목에 `메가`, `mega` 키워드를 사용하면 여기에 표시됩니다!</i>
+<hr>
+<a th:href="@{/posts/new}">리뷰 등록하기</a>
+<hr>
+<ul id="list">
     <li th:each="post : ${posts}" th:if="${post.title.toLowerCase().contains('메가') || post.title.toLowerCase().contains('mega')}">
         <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
         <p th:text="${post.content}"></p>
@@ -14,6 +33,6 @@
         <small th:text="${post.createdAt}"></small>
     </li>
 </ul>
-<a th:href="@{/posts/new}">New post</a>
+
 </body>
 </html>
