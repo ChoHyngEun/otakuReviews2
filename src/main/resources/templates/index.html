@@ -2,7 +2,9 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Main Page</title>
+  <title>메인페이지</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
   <link th:href="@{/css/index.css}" rel="stylesheet" />
   <link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;," >
   <style>
@@ -295,6 +297,111 @@
 
   </div>
   <!--end-->
+
+  <!-- 메인 인덱스 슬라이드 이미지 -->
+  <div id="scontainer">
+    <div id="sbar">
+      <div id="image_left1">
+        <h1>Snow  in the desert</h1>
+        <p>Love, death & robots</p>
+      </div>
+      <div id="image_left2">
+        <h1>PAIKS</h1>
+        <p>Here's a sip of laughter for you, to your happy day.</p>
+      </div>
+      <div id="image_left3">
+        <h1>MEGACOFFEE</h1>
+        <p>Lazy afternoon of daily life<br>A moment of leisure with a drink</p>
+      </div>
+      <div id="image_left4">
+        <h1>STARBUCKS IN PARIS</h1>
+        <p>Coffee, Rest & Peace</p>
+      </div>
+    </div>
+    <div id="mslide">
+      <div id="image_right1">
+
+      </div>
+      <div id="image_right2">
+      </div>
+      <div id="image_right3">
+      </div>
+      <div id="image_right4">
+      </div>
+    </div>
+    <div id="controllers">
+      <button class="down-button">
+        <i class="fas fa-arrow-down"></i>
+      </button>
+      <button class="up-button">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </div>
+  <!--end-->
+  <!--main-slide images script-->
+  <script>
+    const upBtn = document.querySelector('.up-button')
+    const downBtn = document.querySelector('.down-button')
+    const sidebar = document.querySelector('#sbar')
+    const container = document.querySelector('#scontainer')
+    const mainSlide = document.querySelector('#mslide')
+    const slidesCount=mainSlide.querySelectorAll('div').length
+
+    let activeSlideIndex =0
+
+    sidebar.style.top = `-${(slidesCount - 1)* 100 }vh`
+
+    upBtn.addEventListener('click', () => {
+      changeSlide('up')
+    })
+
+    downBtn.addEventListener('click', () => {
+      changeSlide('down')
+    })
+
+    document.addEventListener('keydown', event =>{
+      if (event.key==='ArrowUp'){
+        changeSlide('up')
+      } else if (event.key==='ArrowDown')
+        changeSlide('down')
+    })
+
+
+    function changeSlide(direction) {
+      if (direction === 'up') {
+        activeSlideIndex++
+        if (activeSlideIndex === slidesCount){
+          activeSlideIndex=0
+        }
+      }
+      else if (direction === 'down') {
+        activeSlideIndex--
+        if (activeSlideIndex <0) {
+          activeSlideIndex = slidesCount -1
+        }
+      }
+
+      const height = container.clientHeight
+
+      mainSlide.style.transform =`translateY(-${activeSlideIndex*height}px)`
+
+      sidebar.style.transform =`translateY(${activeSlideIndex*height}px)`
+    }
+
+    setInterval(() => {
+      changeSlide('up')
+    }, 4000)
+  </script>
+  <!--end-->
+
+
+
+
+
+
+
+
   <!-- 채팅 UI -->
   <div id="chat-container">
     <div id="chat-header">
@@ -358,18 +465,18 @@
       <ul id="ediya"></ul>
     </div>
   </section>
-  <div id="scoffee">
-    <input type="button" onclick="_exit1()" value="닫기">
-  </div>
-  <div id="mcoffee">
-    <input type="button" onclick="_exit2()" value="닫기">
-  </div>
-  <div id="pcoffee">
-    <input type="button" onclick="_exit3()" value="닫기">
-  </div>
-  <div id="ecoffee">
-    <input type="button" onclick="_exit4()" value="닫기">
-  </div>
+<!--  <div id="scoffee">-->
+<!--    <input type="button" onclick="_exit1()" value="닫기">-->
+<!--  </div>-->
+<!--  <div id="mcoffee">-->
+<!--    <input type="button" onclick="_exit2()" value="닫기">-->
+<!--  </div>-->
+<!--  <div id="pcoffee">-->
+<!--    <input type="button" onclick="_exit3()" value="닫기">-->
+<!--  </div>-->
+<!--  <div id="ecoffee">-->
+<!--    <input type="button" onclick="_exit4()" value="닫기">-->
+<!--  </div>-->
 
 </div>
 <!-- WebSocket 관련 코드 -->
@@ -435,42 +542,42 @@
     element3.style.right = '-1000px';
     element4.style.right = '-1000px';
   }
-  function _coffee3() {
-    var element1 = document.getElementById('scoffee');
-    var element2 = document.getElementById('mcoffee');
-    var element3 = document.getElementById('pcoffee');
-    var element4 = document.getElementById('ecoffee');
-    element1.style.right = '-1000px';
-    element2.style.right = '-1000px';
-    element3.style.right = '0';
-    element4.style.right = '-1000px';
-  }
-  function _coffee4() {
-    var element1 = document.getElementById('scoffee');
-    var element2 = document.getElementById('mcoffee');
-    var element3 = document.getElementById('pcoffee');
-    var element4 = document.getElementById('ecoffee');
-    element1.style.right = '-1000px';
-    element2.style.right = '-1000px';
-    element3.style.right = '-1000px';
-    element4.style.right = '0';
-  }
-  function _exit1(){
-    const element = document.getElementById('scoffee');
-    element.style.right = '-1000px';
-  }
-  function _exit2(){
-    const element = document.getElementById('mcoffee');
-    element.style.right = '-1000px';
-  }
-  function _exit3(){
-    const element = document.getElementById('pcoffee');
-    element.style.right = '-1000px';
-  }
-  function _exit4(){
-    const element = document.getElementById('ecoffee');
-    element.style.right = '-1000px';
-  }
+  // function _coffee3() {
+  //   var element1 = document.getElementById('scoffee');
+  //   var element2 = document.getElementById('mcoffee');
+  //   var element3 = document.getElementById('pcoffee');
+  //   var element4 = document.getElementById('ecoffee');
+  //   element1.style.right = '-1000px';
+  //   element2.style.right = '-1000px';
+  //   element3.style.right = '0';
+  //   element4.style.right = '-1000px';
+  // }
+  // function _coffee4() {
+  //   var element1 = document.getElementById('scoffee');
+  //   var element2 = document.getElementById('mcoffee');
+  //   var element3 = document.getElementById('pcoffee');
+  //   var element4 = document.getElementById('ecoffee');
+  //   element1.style.right = '-1000px';
+  //   element2.style.right = '-1000px';
+  //   element3.style.right = '-1000px';
+  //   element4.style.right = '0';
+  // }
+  // function _exit1(){
+  //   const element = document.getElementById('scoffee');
+  //   element.style.right = '-1000px';
+  // }
+  // function _exit2(){
+  //   const element = document.getElementById('mcoffee');
+  //   element.style.right = '-1000px';
+  // }
+  // function _exit3(){
+  //   const element = document.getElementById('pcoffee');
+  //   element.style.right = '-1000px';
+  // }
+  // function _exit4(){
+  //   const element = document.getElementById('ecoffee');
+  //   element.style.right = '-1000px';
+  // }
 </script>
 
 </body>

@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,500,300,600,700,800");
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 
 /* 스타일 시트 작성 */
@@ -8,6 +9,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
+	height: 100vh;
 }
 
 /* 로그인/회원가입 UI 스타일 */
@@ -30,6 +32,134 @@ body {
 }
 .login-buttons a:last-child {
 	margin-left: 20px;
+}
+/*index main slide image*/
+
+#scontainer {
+	position: relative;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+#sbar {
+	height: 100%;
+	width: 35%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: transform 0.5s ease-in-out;
+}
+
+#sbar div {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+#image_left1, #image_left2, #image_left3, #image_left4 {
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+#image_left1 {
+	padding-bottom: 10px;
+}
+
+#image_left1, #image_left2, #image_left3, #image_left4 h1 {
+	font-size: 40px;
+	color: white;
+}
+#image_left1,  #image_left3 p {
+	font-size: 25px;
+}
+#image_left2, #image_left4 p {
+	font-size: 25px;
+}
+#image_left1 {
+	background: linear-gradient(229.99deg, #e4e5e6 -26%, #c3e0f1 145%);
+	height: 100vh;
+}
+#image_left2{
+	background: linear-gradient(215.32deg, #f8f7a0 -1%, #9E0706 124%);
+	height: 100vh;
+}
+#image_left3{
+	background: linear-gradient(221.87deg, #0d0e0b 1%, #a39aad 128%);
+	height: 100vh;
+}
+#image_left4{
+	background: linear-gradient(229.99deg, #080c44 -26%, #0b053d 145%);
+	height: 100vh;
+}
+#image_right1 {
+	background-image: url(../img/starbuck.png);
+}
+#image_right2{
+	background-image: url(../img/mega.png);
+}
+#image_right3{
+	background-image: url(../img/PAIKS.png);
+}
+#image_right4{
+	background-image: url(../img/EDIYA6.png);
+}
+
+#mslide {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 35%;
+	width: 65%;
+	transition: transform 0.5s ease-in-out;
+}
+
+#mslide > div {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	height: 100%;
+	width: 100%;
+}
+
+.down-button, .up-button {
+	background-color: #fff;
+	border: none;
+	color: #aaa;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 15px;
+}
+
+#controllers > button:hover {
+	color: #222;
+}
+
+#controllers > button:focus {
+	outline: none;
+}
+
+#scontainer > #controllers > button {
+	position: absolute;
+	left: 35%;
+	top: 50%;
+	z-index: 100;
+}
+
+#scontainer > #controllers > .down-button {
+	transform: translateX(-100%);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+#scontainer > #controllers > .up-button {
+	transform: translateY(-100%);
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 /* 채팅 UI 스타일 */
@@ -220,7 +350,7 @@ footer {
 #intro {
 	margin: 0;
 	padding: 0;
-	font-family: 'Raleway';
+	font-family: 'Raleway', serif;
 	font-weight: 400;
 	font-size: 60px;
 	color: #9A12B3;
@@ -264,13 +394,7 @@ span:nth-child(2n) {
 }
 
 /*menu 추가*/
-#container {
-	width: auto;
-	height: auto;
-	margin: 0px;
 
-
-}
 
 header::after {
 	content: "";
@@ -281,7 +405,7 @@ header::after {
 	float: left;
 	margin-left: 80px;
 	margin-top: 15px;
-	font-family: "Rockwell";
+	font-family: "Rockwell", serif;
 	font-size: 48px;
 	background-color: #1A1E2D;
 	padding-top: 50px;
@@ -324,7 +448,7 @@ nav a::before {
 
 	position: absolute;
 	top: 0;
-	width: 0%;
+	width: 0;
 
 	transition: all ease-in-out 250ms;
 }
@@ -337,7 +461,7 @@ nav a:hover::before {
 /*bongo cat*/
 .bongo-content {
 	position: absolute;
-	top: 0px;
+	top: 0;
 	left: 450px;
 }
 .bongo-container {
@@ -796,3 +920,4 @@ path#f3-l9 {
 	-webkit-transform: rotateX(-37deg) rotateY(-46deg) rotateZ(-23deg) translateX(8px) translateY(20px) translateZ(-50px);
 	transform: rotateX(-37deg) rotateY(-46deg) rotateZ(-23deg) translateX(8px) translateY(20px) translateZ(-50px);
 }
+
