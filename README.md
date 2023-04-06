@@ -8,13 +8,14 @@ otakuReviews 프로젝트에 이어, 팀원 한명이 더 추가되었고, 이�
 <br>
 작업환경: IntelliJ, gradle<br>
 <br>
-구현 기능들<br>
+:kiss:구현 기능들:kiss:
+<br>
 <br>
 회원가입<br>
 로그인<br>
 OTP<br>
 QnA<br>
-채팅<br
+채팅<br>
 유저 실시간 위치<br>
 매장 위치정보<br>
 리뷰 등록, 수정, 제거, 키워드 검색. 전체 및 상세 or 기타 브랜드별<br>
