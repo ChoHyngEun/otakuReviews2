@@ -12,17 +12,16 @@ public class Question {
     private String question;
     private String answer;
     private String author;
-    private Date date; // date 필드 추가
+    private Date date;
 
-    public Question(Long id, String question, String answer, String author, Date date) {
-        this.id = id;
+    public Question() {
+    }
+
+    public Question(String question, String answer, String author, Date date) {
         this.question = question;
         this.answer = answer;
         this.author = author;
         this.date = date;
-    }
-
-    public Question() {
     }
 
     public Long getId() {
@@ -65,6 +64,8 @@ public class Question {
         this.date = date;
     }
 
-    public void setAnsweredDate(Date date) {
-    }
+//    public void setAnsweredDate(Date date) {
+//        this.date = date;
+//    }
+
 }

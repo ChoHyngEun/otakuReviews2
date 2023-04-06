@@ -29,6 +29,17 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
+    public Post() {
+    }
+
+    public Post(String title, String content, User author) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    // getters, setters, constructor
     public Long getId() {
         return id;
     }
@@ -76,16 +87,4 @@ public class Post {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
-
-    public Post(Long id, String title, String content, User author, LocalDateTime createdAt, List<Comment> comments) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.createdAt = createdAt;
-        this.comments = comments;
-    }
-    public Post() {
-    }
-    // getters, setters, constructor
 }

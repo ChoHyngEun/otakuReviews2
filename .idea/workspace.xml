@@ -6,10 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="cb026271-93c8-43e4-8499-05a896015e28" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ex3.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ex3.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/entity/Question.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/service/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/service/QuestionServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/modify.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/read.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/read.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/guestbook/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/guestbook/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/posts/ed.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/posts/ed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/posts/mg.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/posts/mg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/posts/pk.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/posts/pk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/posts/st.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/posts/st.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/qna.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/qna.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/qna2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/qna2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,34 +71,34 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelOrder2": "2",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RequestMappingsPanelWidth2": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Git/otakuReviews2_branch_forTest",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "settings.sync",
-    "spring.configuration.checksum": "6b7c4c7b165d2ae0d906af6091a73d05",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Git/otakuReviews2_branch_forTest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;6b7c4c7b165d2ae0d906af6091a73d05&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Ex3Application">
     <configuration name="Ex3Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.ex3.Ex3Application" />
@@ -202,6 +212,7 @@
       <workItem from="1680696179368" duration="68000" />
       <workItem from="1680696548678" duration="4215000" />
       <workItem from="1680703856049" duration="3477000" />
+      <workItem from="1680742456565" duration="4213000" />
     </task>
     <servers />
   </component>
