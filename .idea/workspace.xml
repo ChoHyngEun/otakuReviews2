@@ -5,11 +5,129 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb026271-93c8-43e4-8499-05a896015e28" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/DTO/GuestbookDTO$GuestbookDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/DTO/GuestbookDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/DTO/PageRequestDTO$PageRequestDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/DTO/PageRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/DTO/PageResultDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/Ex3Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/config/WebSocketConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/CommentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/GuestbookController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/MapController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/PostController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/QuestionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/Guestbook$GuestbookBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/Guestbook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/QBaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/QGuestbook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/QQuestion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/entity/Question.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/interceptor/AuthInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/interceptor/WebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/QComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/QPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/QUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/repository/CommentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/repository/GuestbookRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/repository/PostRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/repository/QuestionRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/CommentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/GuestbookService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/GuestbookServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/PostService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/QuestionService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/QuestionServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ex3/websocket/ChatWebSocketHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/example/ex3/Ex3ApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/querydsl/com/example/ex3/model/QUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/querydsl/com/example/ex3/model/QUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/assets/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/Agree.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/edit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/list.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/mypage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/new.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/show.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/signup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/EDIYA6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/PAIKS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/mega.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/img/starbuck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/agree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery-3.6.3.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/mypage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/otp.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/qna.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/Agree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/comments/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/guestbook/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/guestbook/modify.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/guestbook/read.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/guestbook/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/layout/basic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/layout/layout1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/map_ediya.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/map_mega.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/map_paik.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/map_starbucks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/otp-auth.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/otp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/ed.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/etc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/mg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/new.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/pk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/show.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/posts/st.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/qna.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/qna2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/userNum.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Comment.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CommentController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CommentRepository.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CommentService.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Post.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PostController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PostRepository.class.uniqueId9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PostService.class.uniqueId10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/QComment.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/QPost.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/UserController.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileQuerydsl/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ex3/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ex3/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +175,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NmoyEbRQpJmlPyvZaS3avQTWEq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
@@ -212,6 +333,8 @@
       <workItem from="1680764190351" duration="215000" />
       <workItem from="1680829554740" duration="13000" />
       <workItem from="1680832830110" duration="163000" />
+      <workItem from="1680833672899" duration="2038000" />
+      <workItem from="1680835911463" duration="635000" />
     </task>
     <servers />
   </component>
@@ -228,5 +351,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

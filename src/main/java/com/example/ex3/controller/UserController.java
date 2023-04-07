@@ -143,6 +143,18 @@ public class UserController {
         }
         if (isCodeValid) {
             session.setAttribute("user", user);
+            user.setCont(1);
+            userRepository.save(user);
+            new Thread(() -> {
+                try {
+                    Thread.sleep(500); // 5초 대기
+                    user.setCont(2);
+                    userRepository.save(user);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
             return "redirect:/";
         } else {
             model.addAttribute("errorMessage", "OTP 번호가 일치하지 않습니다.");

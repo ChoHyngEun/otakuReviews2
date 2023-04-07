@@ -46,6 +46,7 @@ public class User implements Serializable {
         this.password = password;
         this.name = name;
         this.email = email;
+        this.cont = cont;
     }
 
 
@@ -103,5 +104,13 @@ public class User implements Serializable {
 
     public boolean checkPassword(String passwordToCheck) {
         return this.password.equals(passwordToCheck);
+    }
+
+    private int cont;
+    public int getCont() {
+        return cont;
+    }
+    public void setCont(int cont) {
+        this.cont = cont;
     }
 }

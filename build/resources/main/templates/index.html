@@ -19,7 +19,7 @@
   <script src="/js/index.js"></script>
 </head>
 <body>
-<div id="login_intro" th:if="${session.user != null}">
+<div id="login_intro" th:if="${session.user != null and session.user.cont == 1}">
   <h1 id="intro" >어서오세요, <span th:text="${session.user.name}"></span>님!</h1>
 </div>
 
@@ -32,7 +32,7 @@
       <li><a href="/st">스타벅스</a></li>
       <li><a href="/mg">메가커피</a></li>
       <li><a href="/pk">빽다방</a></li>
-      <li><a href="/ed">이디아</a></li>
+      <li><a href="/ed">이디야</a></li>
       <li><a href="/etc">기타</a></li>
       <li><a href="/guestbook/list">게시판</a></li>
       <li><a href="/posts">리뷰</a></li>
@@ -310,7 +310,7 @@
         <p>Here's a sip of laughter for you, to your happy day.</p>
       </div>
       <div id="image_left3">
-        <h1>MEGACOFFEE</h1>
+        <h1>MEGA Coffee</h1>
         <p>Lazy afternoon of daily life<br>A moment of leisure with a drink</p>
       </div>
       <div id="image_left4">
