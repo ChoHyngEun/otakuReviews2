@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link th:href="@{/css/list.css}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/list.js"></script>
+
+</head>
+<body>
+    <h1 id="titleh1">Welcome to Review Board</h1>
+<!--시작-->
+<div id="wrapbody">
+    <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+        <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+        <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+            <div class="ms-2">
+                <h5 class="fs-6 mb-0">
+                    <span th:text="${session.user.name}"></span>
+                </h5>
+                <p class="mt-1 mb-0"></p>
+            </div>
+        </div>
+        <ul class="categories list-unstyled">
+            <li class="">
+                <i class="uil-estate fa-fw"></i>
+                <a th:href="@{/}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="has-dropdown">
+                <i class="uil-folder"></i>
+                <i class="uil-estate fa-fw" ></i>
+                <a id="brandreview" href="#"> 브랜드별 리뷰</a>
+                <ul class="sidebar-dropdown list-unstyled">
+                    <li class="sidebar-list-item">
+                        <a th:href="@{/posts}">
+                            <span>전체 리뷰 보기</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a th:href="@{/posts?category=STARBUCKS}">
+                            <span>스타벅스리뷰보기</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a th:href="@{/posts?category=MEGA}">
+                            <span>메가커피리뷰보기</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a th:href="@{/posts?category=PAIK}">
+                            <span>빽다방리뷰보기</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <a th:href="@{/posts?category=EDIYA}">
+                            <span>이디야리뷰보기</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <i class="uil-estate fa-fw"></i>
+                <a th:href="@{/posts/new}">
+                    <span>신규리뷰작성</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <section id="wrapper">
+        <nav class="navbar">
+            <div class="navbar_container">
+                <div class="navbar_header">
+
+                    <a class="navbar_brand" href="#">오타쿠<span class="main-color">리뷰</span></a>
+                </div>
+                <div class="navbar_collapse" id="toggle-navbar">
+                    <ul class="navbar_nav">
+                        <li class="nav_item">
+                            <a class="nav_link" href="#">
+                                <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4">
+            <div class="welcome">
+                <div class="content rounded-3 p-3">
+                    <p class="mb-0">어서오세요, <span th:text="${session.user.name}"></span>님! </p>
+                    <ul>
+                        <h2>작성된 리뷰 확인하기</h2>
+                        <li th:each="post : ${posts}" id="reviewbox">
+                            <div>제목:   <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></div>
+                            <div>내용:   <p th:text="${post.content}"></p></div>
+                            <div th:if="${session.user != null and post.author != null and post.author.username == session.user.username}">
+                                <a th:href="@{/posts/{id}/edit(id=${post.id})}">수정</a>
+                            </div>
+                            <p>작성자:   <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
+                            <br>
+                            <small th:text="${post.createdAt}"></small>
+                            <p>카테고리:   <span th:text="${post.category}"></span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+    <link th:href="@{/css/new.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="edit">
+    <h1>리뷰 작성</h1>
+    <form method="post" th:object="${post}" action="/posts">
+        <input type="hidden" th:field="*{author}" th:value="${session.user}"/>
+        <div>
+            <input type="text" id="title" name="title" th:field="*{title}" required placeholder="제목" />
+        </div>
+        <div>
+            <textarea id="content" name="content" th:field="*{content}" required placeholder="내용작성"></textarea>
+        </div>
+        <div class="box">
+            <label for="category">브랜드:</label>
+            <select id="category" name="category" required>
+                <option th:each="category : ${categories}"
+                        th:value="${category}"
+                        th:text="${category}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">작성하기</button>
+        <button class="btn btn-primary btn-block btn-large"><a th:href="@{/posts}">취소</a></button>
+        <button class="btn btn-primary btn-block btn-large"><a th:href="@{/}">Home</a></button>
+    </form>
+
+
+</div>
+</body>
+</html>

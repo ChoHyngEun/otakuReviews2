@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Num Field</title>
+</head>
+<body>
+<h1>User Num Field</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Num</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- 모든 사용자의 num 필드 값을 출력 -->
+  <tr th:each="user : ${users}">
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.num}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

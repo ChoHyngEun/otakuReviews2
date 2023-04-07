@@ -1,0 +1,110 @@
+@charset "utf-8";
+/* 전체 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #3B3B3B;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 네비게이션 스타일 */
+nav {
+    background-color: #E5E5E5;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px;
+}
+
+nav a:hover {
+    color: #FFFFFF;
+    background-color: #3B3B3B;
+}
+
+/* 섹션 스타일 */
+section {
+    margin: 20px;
+}
+
+section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+}
+
+th {
+    background-color: #E5E5E5;
+}
+
+td {
+    text-align: center;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #3B3B3B;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 12px;
+}
+
+@media (max-width: 767px) {
+    section {
+        margin: 10px;
+    }
+
+    section h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    footer {
+        height: 40px;
+    }
+
+    footer p {
+        font-size: 10px;
+    }
+    .message {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+}

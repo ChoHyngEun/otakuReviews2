@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/qna.css}" rel="stylesheet" />
+  <title>Q&amp;A 페이지</title>
+  <script src="/js/qna.js"></script>
+</head>
+<body>
+<div id="wrap">
+
+  <h1>OTK QnA</h1>
+  <!-- table of all questions -->
+  <h2>궁금한점을 문의해보세요!</h2>
+  <hr>
+  <!-- form to submit a new question -->
+ <div id="qna_bg">
+   <h2><button id="new_que">문의하기</button></h2>
+   <h2><button id="new_que2"><a th:href="@{/}">Home</a></button></h2>
+   <div style="display:none" id="form">
+     <form method="post" th:action="@{/qna}" id="a">
+       <div id="form_label1">
+         <label for="author">작 성 자</label>
+         <input type="text" id="author" name="author" th:field="${question.author}" required><br><br>
+       </div>
+       <div id="form_label2">
+         <label for="question">질문을 입력하세요</label>
+         <textarea id="question" name="question" th:field="${question.question}" required></textarea><br><br>
+       </div>
+       <button id="submit_btn" type="submit">질문등록</button>
+     </form>
+   </div>
+
+   <table>
+     <thead>
+     <tr>
+       <th class="qna_pro">등록일</th>
+       <th class="qna_pro">질문내용</th>
+       <th class="qna_pro">작성자</th>
+       <th class="qna_pro">답변</th>
+     </tr>
+     </thead>
+     <tbody>
+     <tr th:each="question : ${questions}">
+       <td class="qna_bro" th:text="${question.date}"></td>
+       <td class="qna_bro" th:text="${question.question}"></td>
+       <td class="qna_bro" th:text="${question.author}"></td>
+       <td class="qna_bro" th:text="${question.answer}"></td>
+       <td>
+         <a th:if="${session.user != null && session.user.username == 'admin'}"
+            th:href="@{/qna/{id}(id=${question.id})}">답변하기</a>
+       </td>
+     </tr>
+     </tbody>
+   </table>
+ </div>
+
+  <!-- display selected Q&amp;A -->
+  <!--<div th:if="${question}">-->
+  <!--  <h2>Question:</h2>-->
+  <!--  <p th:text="${question.question}"></p>-->
+  <!--  <h2>Answer:</h2>-->
+  <!--  <p th:text="${question.answer}"></p>-->
+  <!--</div>-->
+
+
+
+
+</div>
+</body>
+</html>
