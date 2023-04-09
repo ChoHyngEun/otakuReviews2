@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb026271-93c8-43e4-8499-05a896015e28" name="Changes" comment="" />
+    <list default="true" id="cb026271-93c8-43e4-8499-05a896015e28" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.example.ex3.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.example.ex3.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +79,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/chd_data/intelij/otakuReviews2-main",
+    "last_opened_file_path": "C:/Git/otakuReviews2_css",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -136,6 +142,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="otakuReviews2_branch_forTest [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -157,6 +164,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="ex3" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -169,10 +177,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Ex3Application" />
       <item itemvalue="Gradle.otakuReviews2_branch_forTest [compileQuerydsl]" />
       <item itemvalue="Gradle.otakuReviews2_branch_forTest [dependencies]" />
       <item itemvalue="Spring Boot.ex3" />
-      <item itemvalue="애플리케이션.Ex3Application" />
     </list>
     <recent_temporary>
       <list>
@@ -212,6 +220,7 @@
       <workItem from="1680765245666" duration="26312000" />
       <workItem from="1680796226667" duration="15709000" />
       <workItem from="1680827572568" duration="8695000" />
+      <workItem from="1681009040699" duration="1005000" />
     </task>
     <servers />
   </component>
