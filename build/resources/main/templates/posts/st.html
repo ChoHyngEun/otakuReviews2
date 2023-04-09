@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>스타벅스</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: #036635;
+        }
+        ul, ol, li{
+            list-style: none;
+        }
+        #list{
+            background-color: #c1d6cc;
+            width: 30vw;
+            align-content: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<h1>스타벅스 전체 리뷰입니다!</h1>
+<i>리뷰 제목에 `스타벅스`, `starbucks` 키워드를 사용하면 여기에 표시됩니다!</i>
+<hr>
+<a th:href="@{/posts/new(category='STARBUCKS')}">리뷰 등록하기</a>
+<hr>
+<ul id="list">
+    <li th:each="post : ${posts}" th:if="${post.title.toLowerCase().contains('스타벅스') || post.title.toLowerCase().contains('starbucks')}">
+        <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+        <p th:text="${post.content}"></p>
+        <p>작성자: <span th:text="${post.author != null ? post.author.username : 'Unknown'}"></span></p>
+        <small th:text="${post.createdAt}"></small>
+        <hr>
+    </li>
+</ul>
+
+</body>
+</html>

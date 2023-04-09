@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+a{text-decoration: none;
+display: inline-block;
+color: white;}
+body{
+    width: 100%;
+    height: 100%;
+    background-image:url(../img/post_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#wrap {
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    margin-left: 10%;
+    background-color: rgba(0,0,0, 0.4);
+    position: relative;
+    color: white;
+    border: 1px solid white;
+}
+#qna_bg {
+    width: 100%;
+    height: 60vh;
+    background: rgba(0,0,0,0.6);
+    position: relative;
+}
+#new_que {
+    display: inline-block;
+    float: right;
+    width: 100px;
+    height: 40px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255,255,255, 0.5);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#new_que2 {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 55px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255,255,255, 0.5);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#new_que:hover {
+    background-color: rgba(255,255,255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+.qna_pro {
+    width: 200px;
+    height: 70px;
+    border: 1px double yellow;
+    margin-top: 50px;
+    font-size: 25px;
+}
+#form > form {
+    width: 35%;
+    height: 300px;
+    float: left;
+}
+#form_label1 {
+    width: 450px;
+    height: 100px;
+    line-height: 100px;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+#form_label1 > label {
+    margin-right: 60px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#form_label1 > input {
+    width: 200px;
+    height: 40px;
+
+}
+#form_label2 {
+    width: 450px;
+    height: 100px;
+    line-height: 100px;
+    margin-top: 20px;
+    margin-left: 70px;
+    position: relative;
+}
+#form_label2 > label {
+    font-size: 20px;
+    font-weight: bold;
+}
+#form_label2 > textarea {
+    margin-right: 35px;
+    width: 200px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+#submit_btn {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255,255,255, 0.5);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 100px;
+    right: 0;
+}
+
+.qna_bro {
+    width: 200px;
+    height: 70px;
+    border: 1px double yellow;
+    font-size: 20px;
+}
+
+#overflow{
+    height: 500px;
+    overflow: scroll;
+    border: 1px solid red;
+}
