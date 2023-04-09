@@ -1,5 +1,7 @@
 update: 지도 구현을 위해 사용한 Google API key는 삭제하였음. 본인의 key로 대체하시오.<br>
 https://youtu.be/awM6UXIvEHk<br>
+위 유투브 링크에서 보이는 release 버전은 css 버전입니다 (본 레포의 releases 참조)<br>
+
 <br>
 
 <div align=center>
